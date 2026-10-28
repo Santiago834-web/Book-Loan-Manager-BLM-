@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todos los libros | Biblioteca Digital Dinamarca</title>
+        <!-- LOGO DE LA PESTAÑA (FAVICON) -->
+    <link rel="icon" href="imagenes/ODF.png" type="image/png">
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+
+.catalogo-general{
+    width:100%;
+    max-width:1450px;
+    margin:30px auto 50px;
+    padding:30px;
+    box-sizing:border-box;
+    background:#fffaf6;
+    border:1px solid #d7ccc4;
+    border-radius:12px;
+    box-shadow:0 5px 15px rgba(0,0,0,.15);
+}
+.boton-regresar-catalogo{
+    display:inline-block;
+    margin-bottom:20px;
+    padding:9px 15px;
+    background:white;
+    color:#c71922;
+    border:1px solid #c71922;
+    border-radius:7px;
+    text-decoration:none;
+    font-weight:bold;
+    font-size:13px;
+    transition:.2s;
+}
+.boton-regresar-catalogo:hover{background:#c71922;color:white;}
+.titulo-catalogo{text-align:center;margin-bottom:25px;}
+.titulo-catalogo h2{color:#bd1b24;font-size:32px;margin-bottom:8px;}
+.titulo-catalogo p{color:#555;font-size:16px;margin:0 auto;max-width:750px;line-height:1.5;}
+.linea-catalogo{width:65px;height:3px;background:#c71922;margin:15px auto;}
+.buscador-catalogo{max-width:850px;margin:25px auto;display:flex;}
+.buscador-catalogo input{
+    flex:1;height:46px;padding:0 16px;border:1px solid #cfc5bd;border-right:none;
+    border-radius:7px 0 0 7px;font-size:14px;outline:none;background:white;
+}
+.buscador-catalogo input:focus{border-color:#c71922;}
+.buscador-catalogo button{
+    height:46px;padding:0 22px;border:none;border-radius:0 7px 7px 0;
+    background:#c71922;color:white;font-weight:bold;cursor:pointer;
+}
+.buscador-catalogo button:hover{background:#970d15;}
+.filtros-catalogo{
+    display:flex;justify-content:center;flex-wrap:wrap;gap:9px;margin:25px 0;
+}
+.filtro{
+    padding:9px 16px;border:1px solid #c71922;border-radius:20px;background:white;
+    color:#c71922;font-weight:bold;cursor:pointer;font-size:13px;transition:.2s;
+}
+.filtro:hover,.filtro.activo{background:#c71922;color:white;}
+.informacion-catalogo{
+    display:flex;justify-content:space-between;align-items:center;margin:25px 0 15px;
+    padding-bottom:10px;border-bottom:2px solid #c71922;
+}
+.informacion-catalogo h3{margin:0;color:#333;font-size:19px;}
+#contadorLibros{color:#c71922;font-weight:bold;}
+.estanteria{
+    display:grid;
+    grid-template-columns:repeat(4,minmax(0,1fr));
+    gap:18px;
+}
+.tarjeta-catalogo{
+    background:white;border:1px solid #d7ccc4;border-radius:9px;padding:15px;
+    box-shadow:0 3px 8px rgba(0,0,0,.12);transition:.25s;
+    display:flex;flex-direction:column;min-width:0;
+}
+.tarjeta-catalogo:hover{
+    transform:translateY(-5px);border-color:#c71922;
+    box-shadow:0 7px 15px rgba(0,0,0,.20);
+}
+.portada-catalogo{
+    width:100%;height:230px;margin-bottom:13px;overflow:hidden;border-radius:5px;
+    background:#eee;box-shadow:2px 3px 7px rgba(0,0,0,.25);
+}
+.portada-catalogo img{width:100%;height:100%;object-fit:cover;display:block;}
+.categoria-libro{
+    display:inline-block;width:fit-content;padding:4px 8px;margin-bottom:7px;border-radius:4px;
+    background:#f5e5e3;color:#c71922;font-size:10px;font-weight:bold;text-transform:uppercase;
+}
+.tarjeta-catalogo h3{color:#bd1b24;font-size:17px;line-height:1.3;margin:0 0 7px;}
+.autor-catalogo{margin:0;color:#555;font-size:13px;line-height:1.4;}
+.boton-informacion{margin-top:auto;padding-top:12px;}
+.boton-informacion button{
+    width:100%;padding:8px;border:none;border-radius:6px;background:#c71922;color:white;
+    font-size:12px;font-weight:bold;cursor:pointer;
+}
+.boton-informacion button:hover{background:#970d15;}
+.sin-resultados{display:none;text-align:center;padding:50px 20px;color:#666;}
+.sin-resultados strong{display:block;color:#c71922;font-size:20px;margin-bottom:8px;}
+@media(max-width:1100px){.estanteria{grid-template-columns:repeat(3,minmax(0,1fr));}}
+@media(max-width:800px){
+    .catalogo-general{margin:20px 10px;padding:20px 15px;width:calc(100% - 20px);}
+    .estanteria{grid-template-columns:repeat(2,minmax(0,1fr));}
+}
+@media(max-width:550px){
+    .titulo-catalogo h2{font-size:25px;}
+    .buscador-catalogo{flex-direction:column;}
+    .buscador-catalogo input{border-right:1px solid #cfc5bd;border-radius:7px;}
+    .buscador-catalogo button{margin-top:7px;border-radius:7px;}
+    .estanteria{grid-template-columns:1fr;}
+    .portada-catalogo{height:280px;}
+    .informacion-catalogo{flex-direction:column;align-items:flex-start;gap:5px;}
+}
+
+    </style>
+</head>
+
+<body>
+
+    <div class="barra-superior">
+        Transparencia y acceso a la información pública
+    </div>
+
+    <nav class="menu">
+        <a href="index.html">Inicio</a>
+        <a href="#">Historial de Agendas</a>
+        <a href="#">Póliza</a>
+        <a href="#">La institución</a>
+        <a href="#">Accesos</a>
+        <a href="#">Investigación</a>
+        <a href="#">Estudiantes</a>
+        <a href="#">Utilidades</a>
+        <a href="#">Lógica</a>
+    </nav>
+
+    <header class="encabezado">
+
+        <div class="titulo">
+            <h1>Institución Educativa Dinamarca</h1>
+            <h2>Un lugar donde se aprende y se es feliz</h2>
+        </div>
+
+        <div class="logo">
+            <img src="imagenes/logo-nuevo.jpg" alt="Logo Institución Educativa Dinamarca">
+        </div>
+
+    </header>
+
+    <div class="frase" id="frase"></div>
+
+    <main>
+        <section class="catalogo-general">
+
+            <a href="index.html" class="boton-regresar-catalogo">
+                ← Volver a la biblioteca
+            </a>
+
+            <div class="titulo-catalogo">
+                <h2>📚 Todos los libros</h2>
+                <div class="linea-catalogo"></div>
+                <p>
+                    Explora todos los libros disponibles en la Biblioteca
+                    Digital Dinamarca. Puedes buscar por título, autor o categoría.
+                </p>
+            </div>
+
+            <div class="buscador-catalogo">
+                <input
+                    type="text"
+                    id="buscadorCatalogo"
+                    placeholder="Buscar por título, autor o categoría..."
+                    autocomplete="off"
+                >
+                <button type="button" id="botonBuscarCatalogo">Buscar</button>
+            </div>
+
+            <div class="filtros-catalogo">
+                <button class="filtro activo" data-categoria="todos">Todos</button>
+                <button class="filtro" data-categoria="matematicas">Matemáticas</button>
+                <button class="filtro" data-categoria="quimica">Química</button>
+                <button class="filtro" data-categoria="literatura">Literatura</button>
+                <button class="filtro" data-categoria="historia">Historia</button>
+                <button class="filtro" data-categoria="biologia">Biología</button>
+            </div>
+
+            <div class="informacion-catalogo">
+                <h3>Libros de la biblioteca</h3>
+                <span id="contadorLibros">0 libros</span>
+            </div>
+
+            <div class="estanteria" id="contenedorLibros"></div>
+
+            <div class="sin-resultados" id="sinResultados">
+                <strong>No encontramos libros</strong>
+                Intenta buscar con otro título, autor o categoría.
+            </div>
+
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-texto">
+            Sede Central: Calle 91 # 65-119 - Tel: 604 257 3923 -
+            WhatsApp: 300 416 6737 //
+            Sede Ricardo Uribe Escobar: Carrera 64B # 75A-49 -
+            Tel: 604 257 0276 - WhatsApp: 300 416 1851 //
+            Correo: iedinamarca@dinamarca.edu.co
+        </div>
+    </footer>
+
+    <script>
+        const librosBase = [{"titulo": "Algebra and Trigonometry", "autor": "Jay Abramson", "categoria": "Matemáticas", "clave": "matematicas", "imagen": "imagenes/Algebra-and-Trigonometry.jpg"}, {"titulo": "Calculus Volume 1", "autor": "Gilbert Strang y Edwin \"Jed\" Herman", "categoria": "Matemáticas", "clave": "matematicas", "imagen": "imagenes/Calculus-Volume1.jpg"}, {"titulo": "Calculus Volume 2", "autor": "Gilbert Strang y Edwin \"Jed\" Herman", "categoria": "Matemáticas", "clave": "matematicas", "imagen": "imagenes/Calculus-Volume2.jpg"}, {"titulo": "College Algebra 2e", "autor": "Jay Abramson", "categoria": "Matemáticas", "clave": "matematicas", "imagen": "imagenes/College-Algebra.jpg"}, {"titulo": "Introductory Statistics 2e", "autor": "Barbara Illowsky y Susan Dean", "categoria": "Matemáticas", "clave": "matematicas", "imagen": "imagenes/Introductory-statistics.jpg"}, {"titulo": "Precalculus 2e", "autor": "Jay Abramson", "categoria": "Matemáticas", "clave": "matematicas", "imagen": "imagenes/Precalculus.jpg"}, {"titulo": "La cuchara menguante", "autor": "Sam Kean", "categoria": "Química", "clave": "quimica", "imagen": "imagenes/imagen-4.jpg"}, {"titulo": "La tabla periódica", "autor": "Por verificar", "categoria": "Química", "clave": "quimica", "imagen": "imagenes/imagen-5.jpg"}, {"titulo": "Principios de Química", "autor": "Peter Atkins y Loretta Jones", "categoria": "Química", "clave": "quimica", "imagen": "imagenes/principios-quimica.jpg"}, {"titulo": "Química", "autor": "Raymond Chang", "categoria": "Química", "clave": "quimica", "imagen": "imagenes/imagen-1.jpg"}, {"titulo": "Química Orgánica", "autor": "Leroy G. Wade Jr.", "categoria": "Química", "clave": "quimica", "imagen": "imagenes/imagen-3.jpg"}, {"titulo": "Química: La ciencia central", "autor": "Theodore L. Brown, H. Eugene LeMay, Bruce E. Bursten y Catherine J. Murphy", "categoria": "Química", "clave": "quimica", "imagen": "imagenes/imagen-2.jpg"}, {"titulo": "Cien años de soledad", "autor": "Gabriel García Márquez", "categoria": "Literatura", "clave": "literatura", "imagen": "imagenes/cien-anos-de-soledad.jpg"}, {"titulo": "Don Quijote de la Mancha", "autor": "Miguel de Cervantes", "categoria": "Literatura", "clave": "literatura", "imagen": "imagenes/don-quijote.jpg"}, {"titulo": "Hamlet", "autor": "William Shakespeare", "categoria": "Literatura", "clave": "literatura", "imagen": "imagenes/hamlet.jpg"}, {"titulo": "La Odisea", "autor": "Homero", "categoria": "Literatura", "clave": "literatura", "imagen": "imagenes/imagen-5.jpg"}, {"titulo": "La sombra del viento", "autor": "Carlos Ruiz Zafón", "categoria": "Literatura", "clave": "literatura", "imagen": "imagenes/imagen-6.jpg"}, {"titulo": "Orgullo y prejuicio", "autor": "Jane Austen", "categoria": "Literatura", "clave": "literatura", "imagen": "imagenes/orgullo-y-prejuicio.jpg"}, {"titulo": "Colombia: una nación a pesar de sí misma", "autor": "David Bushnell", "categoria": "Historia", "clave": "historia", "imagen": "imagenes/colombia-una-nacion-a-pesar-de-si-misma.jpg"}, {"titulo": "Historia Antigua", "autor": "Recurso educativo", "categoria": "Historia", "clave": "historia", "imagen": "imagenes/historia-antigua.jpg"}, {"titulo": "Historia de Colombia: país fragmentado, sociedad dividida", "autor": "Marco Palacios y Frank Safford", "categoria": "Historia", "clave": "historia", "imagen": "imagenes/historia-de-colombia-pais-fragmentado.jpg"}, {"titulo": "Historia mínima de Colombia", "autor": "Jorge Orlando Melo", "categoria": "Historia", "clave": "historia", "imagen": "imagenes/historia-minima-colombia.jpg"}, {"titulo": "Manual de Historia de Colombia", "autor": "Jaime Jaramillo Uribe", "categoria": "Historia", "clave": "historia", "imagen": "imagenes/manual-de-historia-de-colombia.jpg"}, {"titulo": "World History, Volume 1", "autor": "Ann Kordas, Ryan J. Lynch, Brooke Nelson y Julie Tatlock", "categoria": "Historia", "clave": "historia", "imagen": "imagenes/world-history-volume-1.jpg"}, {"titulo": "World History, Volume 2", "autor": "OpenStax", "categoria": "Historia", "clave": "historia", "imagen": "imagenes/world-history-volume-2.jpg"}, {"titulo": "Biología", "autor": "Neil A. Campbell", "categoria": "Biología", "clave": "biologia", "imagen": "imagenes/biologia-1.jpg"}, {"titulo": "Biología Celular", "autor": "Autores Varios", "categoria": "Biología", "clave": "biologia", "imagen": "imagenes/biologia-4.jpg"}, {"titulo": "Biology 2e", "autor": "Mary Ann Clark, Jung Choi y Matthew Douglas", "categoria": "Biología", "clave": "biologia", "imagen": "imagenes/biologia-2.jpg"}, {"titulo": "Conceptos de Biología", "autor": "OpenStax", "categoria": "Biología", "clave": "biologia", "imagen": "imagenes/biologia-3.jpg"}, {"titulo": "Ecología", "autor": "Autores Varios", "categoria": "Biología", "clave": "biologia", "imagen": "imagenes/biologia-6.jpg"}, {"titulo": "Genética", "autor": "Autores Varios", "categoria": "Biología", "clave": "biologia", "imagen": "imagenes/biologia-5.jpg"}];
+
+        const contenedor = document.getElementById("contenedorLibros");
+        const buscador = document.getElementById("buscadorCatalogo");
+        const botonBuscar = document.getElementById("botonBuscarCatalogo");
+        const contador = document.getElementById("contadorLibros");
+        const sinResultados = document.getElementById("sinResultados");
+        const filtros = document.querySelectorAll(".filtro");
+
+        let categoriaActual = "todos";
+
+        function normalizar(texto) {
+            return String(texto || "")
+                .toLowerCase()
+                .normalize("NFD")
+                .replace(/[\u0300-\u036f]/g, "");
+        }
+
+        function obtenerLibrosNuevos() {
+            try {
+                return JSON.parse(localStorage.getItem("librosAgregados")) || [];
+            } catch (error) {
+                return [];
+            }
+        }
+
+        function convertirLibroNuevo(libro) {
+            return {
+                titulo: libro.titulo || "Sin título",
+                autor: libro.autor || "Autor no especificado",
+                categoria: libro.categoria || "Otros",
+                clave: normalizar(libro.categoria || "otros").replace(/\s+/g, "-"),
+                imagen: libro.imagen || "imagenes/libro-default.jpg",
+                anio: libro.anio || "",
+                descripcion: libro.descripcion || ""
+            };
+        }
+
+        function obtenerTodosLosLibros() {
+            const nuevos = obtenerLibrosNuevos().map(convertirLibroNuevo);
+            return [...librosBase, ...nuevos];
+        }
+
+        function crearTarjeta(libro) {
+            const tarjeta = document.createElement("article");
+            tarjeta.className = "tarjeta-catalogo";
+            tarjeta.dataset.categoria = normalizar(libro.categoria).replace(/\s+/g, "-");
+            tarjeta.dataset.titulo = normalizar(libro.titulo);
+            tarjeta.dataset.autor = normalizar(libro.autor);
+
+            const portada = document.createElement("div");
+            portada.className = "portada-catalogo";
+
+            const imagen = document.createElement("img");
+            imagen.src = libro.imagen;
+            imagen.alt = "Portada de " + libro.titulo;
+
+            portada.appendChild(imagen);
+
+            const categoria = document.createElement("span");
+            categoria.className = "categoria-libro";
+            categoria.textContent = libro.categoria;
+
+            const titulo = document.createElement("h3");
+            titulo.textContent = libro.titulo;
+
+            const autor = document.createElement("p");
+            autor.className = "autor-catalogo";
+
+            const etiqueta = document.createElement("strong");
+            etiqueta.textContent = "Autor: ";
+
+            autor.appendChild(etiqueta);
+            autor.appendChild(document.createTextNode(libro.autor));
+
+            tarjeta.appendChild(portada);
+            tarjeta.appendChild(categoria);
+            tarjeta.appendChild(titulo);
+            tarjeta.appendChild(autor);
+
+            if (libro.anio) {
+                const anio = document.createElement("p");
+                anio.className = "autor-catalogo";
+                anio.textContent = "Año: " + libro.anio;
+                tarjeta.appendChild(anio);
+            }
+
+            return tarjeta;
+        }
+
+        function renderizarLibros() {
+            const libros = obtenerTodosLosLibros();
+
+            libros.sort((a, b) =>
+                normalizar(a.titulo).localeCompare(
+                    normalizar(b.titulo),
+                    "es",
+                    { sensitivity: "base" }
+                )
+            );
+
+            contenedor.innerHTML = "";
+
+            libros.forEach(libro => {
+                contenedor.appendChild(crearTarjeta(libro));
+            });
+
+            aplicarFiltros();
+        }
+
+        function aplicarFiltros() {
+            const texto = normalizar(buscador.value).trim();
+            const tarjetas = document.querySelectorAll(".tarjeta-catalogo");
+            let cantidad = 0;
+
+            tarjetas.forEach(tarjeta => {
+                const coincideTexto =
+                    tarjeta.dataset.titulo.includes(texto) ||
+                    tarjeta.dataset.autor.includes(texto) ||
+                    tarjeta.dataset.categoria.includes(texto);
+
+                const coincideCategoria =
+                    categoriaActual === "todos" ||
+                    tarjeta.dataset.categoria === categoriaActual;
+
+                if (coincideTexto && coincideCategoria) {
+                    tarjeta.style.display = "flex";
+                    cantidad++;
+                } else {
+                    tarjeta.style.display = "none";
+                }
+            });
+
+            contador.textContent =
+                cantidad + (cantidad === 1 ? " libro" : " libros");
+
+            sinResultados.style.display =
+                cantidad === 0 ? "block" : "none";
+        }
+
+        buscador.addEventListener("input", aplicarFiltros);
+        botonBuscar.addEventListener("click", aplicarFiltros);
+
+        filtros.forEach(filtro => {
+            filtro.addEventListener("click", () => {
+                filtros.forEach(item => item.classList.remove("activo"));
+                filtro.classList.add("activo");
+
+                categoriaActual = filtro.dataset.categoria;
+                aplicarFiltros();
+            });
+        });
+
+        const frases = [
+            "Estamos en un cambio de era caracterizado por la digitalización de prácticamente todo lo que nos rodea.",
+            "La educación es el arma más poderosa que puedes usar para cambiar el mundo.",
+            "Aprender es descubrir que algo es posible.",
+            "El conocimiento abre puertas hacia nuevas oportunidades.",
+            "La lectura es una ventana abierta hacia nuevos mundos.",
+            "Cada libro es una nueva oportunidad para aprender.",
+            "La educación transforma vidas y construye un mejor futuro."
+        ];
+
+        document.getElementById("frase").textContent =
+            frases[Math.floor(Math.random() * frases.length)];
+
+        renderizarLibros();
+
+        // Si la bibliotecaria agrega un libro en otra parte del sitio
+        // y luego vuelve al catálogo, se actualiza al regresar a esta página.
+        window.addEventListener("storage", event => {
+            if (event.key === "librosAgregados") {
+                renderizarLibros();
+            }
+        });
+    </script>
+
+</body>
+</html>

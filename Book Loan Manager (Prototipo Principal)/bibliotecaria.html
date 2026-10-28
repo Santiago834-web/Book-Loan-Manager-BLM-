@@ -1,0 +1,1030 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        Panel de la Bibliotecaria
+    </title>
+
+        <!-- LOGO DE LA PESTAÑA (FAVICON) -->
+    <link rel="icon" href="imagenes/ODF.png" type="image/png">
+
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+
+</head>
+
+
+<body>
+
+
+    <div class="barra-superior">
+
+        Biblioteca Digital Dinamarca
+
+    </div>
+
+
+    <header class="encabezado">
+
+        <div class="titulo">
+
+            <h1>
+                Panel de la Bibliotecaria
+            </h1>
+
+            <h2>
+                Gestión de solicitudes de préstamo
+            </h2>
+
+        </div>
+
+    </header>
+
+
+    <div class="frase">
+
+        Revisa y administra las solicitudes realizadas por los estudiantes.
+
+    </div>
+
+<div id="contenidoBibliotecaria" style="display: none;"></div>
+
+    <main class="contenedor">
+
+
+        <section class="panel-bibliotecaria">
+
+
+            <a
+                href="index.html"
+                class="boton-regresar"
+            >
+
+                ← Volver a la biblioteca
+
+            </a>
+
+
+            <h2>
+                📚 Solicitudes de préstamo
+            </h2>
+
+
+            <div
+                id="listaSolicitudes"
+                class="lista-solicitudes"
+            >
+
+            </div>
+            
+            <hr>
+
+            <h2>
+                📝 Reseñas pendientes
+            </h2>
+
+            <div id="listaResenas">
+
+            </div>
+
+        </section>
+
+
+    </main>
+
+</div>
+
+    <script>
+
+        function verificarPassword() {
+
+            const password =
+                document.getElementById(
+                    "passwordBibliotecaria"
+                ).value;
+
+
+            const contraseñaCorrecta =
+                "Dinamarca2026";
+
+
+            if (password === contraseñaCorrecta) {
+
+                document.getElementById(
+                    "pantallaLogin"
+                ).style.display = "none";
+
+
+                document.getElementById(
+                    "contenidoBibliotecaria"
+                ).style.display = "block";
+
+
+                sessionStorage.setItem(
+                    "bibliotecariaAutorizada",
+                    "true"
+                );
+
+            } else {
+
+                document.getElementById(
+                    "mensajeError"
+                ).textContent =
+                    "❌ Contraseña incorrecta.";
+
+            }
+
+        }
+
+        if (
+            sessionStorage.getItem(
+                "bibliotecariaAutorizada"
+            ) === "true"
+        ) {
+
+            document.getElementById(
+                "pantallaLogin"
+            ).style.display = "none";
+
+
+            document.getElementById(
+                "contenidoBibliotecaria"
+            ).style.display = "block";
+
+        }
+
+        const lista =
+            document.getElementById("listaSolicitudes");
+
+
+        const solicitudes =
+            JSON.parse(
+                localStorage.getItem("solicitudesPrestamo")
+            ) || [];
+
+
+        function mostrarSolicitudes() {
+
+
+            if (solicitudes.length === 0) {
+
+                lista.innerHTML = `
+
+                    <div class="sin-solicitudes">
+
+                        <h3>
+                            No hay solicitudes todavía
+                        </h3>
+
+                        <p>
+                            Las solicitudes realizadas por los estudiantes
+                            aparecerán aquí.
+                        </p>
+
+                    </div>
+
+                `;
+
+                return;
+
+            }
+
+
+            lista.innerHTML = "";
+
+
+            solicitudes.forEach(function(solicitud, indice) {
+
+
+                lista.innerHTML += `
+
+                    <article class="tarjeta-solicitud">
+
+
+                        <div class="encabezado-solicitud">
+
+                            <h3>
+
+                                ${solicitud.libro}
+
+                            </h3>
+
+
+                            <span class="estado-pendiente">
+
+                                ${solicitud.estado}
+
+                            </span>
+
+                        </div>
+
+
+                        <div class="informacion-solicitud">
+
+
+                            <h4>
+                                👨‍🎓 Información del estudiante
+                            </h4>
+
+
+                            <p>
+                                <strong>Nombre:</strong>
+                                ${solicitud.nombre}
+                            </p>
+
+
+                            <p>
+                                <strong>Documento:</strong>
+                                ${solicitud.documento}
+                            </p>
+
+
+                            <p>
+                                <strong>Grado:</strong>
+                                ${solicitud.grado}
+                            </p>
+
+
+                            <p>
+                                <strong>Grupo:</strong>
+                                ${solicitud.grupo}
+                            </p>
+
+
+                            <p>
+                                <strong>Correo:</strong>
+                                ${solicitud.correo}
+                            </p>
+
+
+                            <p>
+                                <strong>Teléfono:</strong>
+                                ${solicitud.telefono}
+                            </p>
+
+
+                            <hr>
+
+
+                            <h4>
+                                📚 Información del libro
+                            </h4>
+
+
+                            <p>
+                                <strong>Libro:</strong>
+                                ${solicitud.libro}
+                            </p>
+
+
+                            <p>
+                                <strong>Autor:</strong>
+                                ${solicitud.autor}
+                            </p>
+
+
+                            <p>
+                                <strong>Código:</strong>
+                                ${solicitud.codigo}
+                            </p>
+
+
+                            <p>
+                                <strong>Fecha:</strong>
+                                ${solicitud.fecha}
+                            </p>
+
+
+                            <p>
+                                <strong>Comentario:</strong>
+                                ${solicitud.comentario}
+                            </p>
+
+
+                        </div>
+
+
+                        <div class="botones-solicitud">
+
+
+                            <button
+                                onclick="aprobarSolicitud(${indice})"
+                                class="boton-aprobar"
+                            >
+
+                                ✓ Aprobar
+
+                            </button>
+
+
+                            <button
+                                onclick="rechazarSolicitud(${indice})"
+                                class="boton-rechazar"
+                            >
+
+                                ✕ Rechazar
+
+                            </button>
+
+
+                        </div>
+
+
+                    </article>
+
+                `;
+
+            });
+
+        }
+
+
+        function aprobarSolicitud(indice) {
+
+            solicitudes[indice].estado = "Aprobado";
+
+
+            localStorage.setItem(
+
+                "solicitudesPrestamo",
+
+                JSON.stringify(solicitudes)
+
+            );
+
+
+            mostrarSolicitudes();
+
+        }
+
+
+        function rechazarSolicitud(indice) {
+
+            solicitudes[indice].estado = "Rechazado";
+
+
+            localStorage.setItem(
+
+                "solicitudesPrestamo",
+
+                JSON.stringify(solicitudes)
+
+            );
+
+
+            mostrarSolicitudes();
+
+        }
+
+
+        mostrarSolicitudes();
+
+        const listaResenas =
+    document.getElementById("listaResenas");
+
+let resenas =
+    JSON.parse(localStorage.getItem("resenas")) || [];
+
+
+function mostrarResenas() {
+
+    listaResenas.innerHTML = "";
+
+    const pendientes = resenas.filter(function(resena) {
+
+        return resena.estado === "Pendiente";
+
+    });
+
+
+    if (pendientes.length === 0) {
+
+        listaResenas.innerHTML = `
+        
+            <div class="sin-solicitudes">
+
+                <h3>
+                    No hay reseñas pendientes
+                </h3>
+
+                <p>
+                    Las nuevas reseñas aparecerán aquí
+                    para ser revisadas.
+                </p>
+
+            </div>
+        
+        `;
+
+        return;
+    }
+
+
+    pendientes.forEach(function(resena) {
+
+        const indice = resenas.findIndex(function(item) {
+
+            return item.id === resena.id;
+
+        });
+
+
+        listaResenas.innerHTML += `
+
+            <article class="tarjeta-solicitud">
+
+                <div class="encabezado-solicitud">
+
+                    <h3>
+                        ${resena.libro}
+                    </h3>
+
+                    <span class="estado-pendiente">
+                        ${resena.estado}
+                    </span>
+
+                </div>
+
+
+                <div class="informacion-solicitud">
+
+                    <h4>
+                        👨‍🎓 Información del estudiante
+                    </h4>
+
+                    <p>
+                        <strong>Nombre:</strong>
+                        ${resena.nombre}
+                    </p>
+
+                    <p>
+                        <strong>Grado:</strong>
+                        ${resena.grado}
+                    </p>
+
+
+                    <hr>
+
+
+                    <h4>
+                        📚 Información del libro
+                    </h4>
+
+                    <p>
+                        <strong>Libro:</strong>
+                        ${resena.libro}
+                    </p>
+
+                    <p>
+                        <strong>Autor:</strong>
+                        ${resena.autor}
+                    </p>
+
+                    <p>
+                        <strong>Calificación:</strong>
+                        ${resena.calificacion}
+                    </p>
+
+
+                    <hr>
+
+
+                    <h4>
+                        📝 Reseña
+                    </h4>
+
+                    <p>
+                        ${resena.resena}
+                    </p>
+
+                </div>
+
+
+                <div class="botones-solicitud">
+
+                    <button
+                        onclick="aprobarResena(${indice})"
+                        class="boton-aprobar"
+                    >
+                        ✓ Publicar reseña
+                    </button>
+
+
+                    <button
+                        onclick="rechazarResena(${indice})"
+                        class="boton-rechazar"
+                    >
+                        ✕ Rechazar
+                    </button>
+
+                </div>
+
+            </article>
+
+        `;
+
+    });
+
+}
+
+function aprobarResena(indice) {
+
+    resenas[indice].estado = "Aprobada";
+
+    localStorage.setItem(
+        "resenas",
+        JSON.stringify(resenas)
+    );
+
+    mostrarResenas();
+
+    alert(
+        "✅ La reseña fue aprobada y publicada."
+    );
+
+}
+
+
+function rechazarResena(indice) {
+
+    resenas[indice].estado = "Rechazada";
+
+    localStorage.setItem(
+        "resenas",
+        JSON.stringify(resenas)
+    );
+
+    mostrarResenas();
+
+    alert(
+        "❌ La reseña fue rechazada."
+    );
+
+}
+
+
+mostrarResenas();
+
+
+    </script>
+
+    <!-- =========================================
+        ADMINISTRAR LIBROS
+    ========================================= -->
+    <section class="administrar-libros">
+
+        <h2>📚 Agregar nuevo libro</h2>
+
+        <form id="formularioLibro">
+
+            <div class="campo-libro">
+                <label for="tituloLibro">Título del libro</label>
+                <input
+                    type="text"
+                    id="tituloLibro"
+                    placeholder="Ej: Cien años de soledad"
+                    required
+                >
+            </div>
+
+            <div class="campo-libro">
+                <label for="autorLibro">Autor</label>
+                <input
+                    type="text"
+                    id="autorLibro"
+                    placeholder="Ej: Gabriel García Márquez"
+                    required
+                >
+            </div>
+
+            <div class="campo-libro">
+                <label for="categoriaLibro">Categoría</label>
+
+                <select id="categoriaLibro" required>
+                    <option value="">Selecciona una categoría</option>
+                    <option value="Matemáticas">Matemáticas</option>
+                    <option value="Química">Química</option>
+                    <option value="Literatura">Literatura</option>
+                    <option value="Biología">Biología</option>
+                    <option value="Historia">Historia</option>
+                    <option value="Física">Física</option>
+                    <option value="Inglés">Inglés</option>
+                    <option value="Filosofía">Filosofía</option>
+                    <option value="Otros">Otros</option>
+                </select>
+            </div>
+
+            <div class="campo-libro">
+                <label for="anioLibro">Año de publicación</label>
+                <input
+                    type="number"
+                    id="anioLibro"
+                    placeholder="Ej: 2024"
+                    min="1000"
+                    max="2100"
+                >
+            </div>
+
+            <div class="campo-libro">
+                <label for="imagenLibro">URL de la portada</label>
+                <input
+                    type="text"
+                    id="imagenLibro"
+                    placeholder="Ej: imagen-7.jpg"
+                >
+            </div>
+
+            <div class="campo-libro">
+                <label for="descripcionLibro">Descripción</label>
+                <textarea
+                    id="descripcionLibro"
+                    placeholder="Escribe una breve descripción del libro..."
+                    rows="4"
+                ></textarea>
+            </div>
+
+            <button type="submit" class="btn-agregar-libro">
+                ➕ Agregar libro
+            </button>
+
+        </form>
+
+        <p id="mensajeLibro"></p>
+
+    </section>
+
+
+    <!-- =========================================
+        LIBROS AGREGADOS
+    ========================================= -->
+    <section class="libros-agregados">
+
+        <h2>📖 Libros agregados por la bibliotecaria</h2>
+
+        <div id="listaLibrosBibliotecaria"></div>
+
+    </section>
+
+
+    <style>
+
+    .administrar-libros,
+    .libros-agregados {
+        max-width: 1000px;
+        margin: 40px auto;
+        padding: 30px;
+        background: #fffaf6;
+        border-radius: 15px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.10);
+    }
+
+    .administrar-libros h2,
+    .libros-agregados h2 {
+        color: #c71922;
+        margin-bottom: 25px;
+    }
+
+    .campo-libro {
+        margin-bottom: 18px;
+    }
+
+    .campo-libro label {
+        display: block;
+        margin-bottom: 7px;
+        font-weight: bold;
+        color: #050505;
+    }
+
+    .campo-libro input,
+    .campo-libro select,
+    .campo-libro textarea {
+        width: 100%;
+        padding: 12px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        font-size: 15px;
+        box-sizing: border-box;
+    }
+
+    .campo-libro textarea {
+        resize: vertical;
+    }
+
+    .btn-agregar-libro {
+        background: #c71922;
+        color: white;
+        border: none;
+        padding: 13px 25px;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 16px;
+        font-weight: bold;
+    }
+
+    .btn-agregar-libro:hover {
+        background: #a9141c;
+    }
+
+    #mensajeLibro {
+        margin-top: 15px;
+        font-weight: bold;
+    }
+
+    .libro-administrado {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        padding: 18px;
+        margin-bottom: 15px;
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        background: white;
+    }
+
+    .libro-administrado img {
+        width: 80px;
+        height: 110px;
+        object-fit: cover;
+        border-radius: 6px;
+    }
+
+    .info-libro-admin {
+        flex: 1;
+    }
+
+    .info-libro-admin h3 {
+        margin: 0 0 6px;
+        color: #050505;
+    }
+
+    .info-libro-admin p {
+        margin: 4px 0;
+    }
+
+    .btn-eliminar-libro {
+        background: #050505;
+        color: white;
+        border: none;
+        padding: 9px 14px;
+        border-radius: 7px;
+        cursor: pointer;
+    }
+
+    .btn-eliminar-libro:hover {
+        background: #c71922;
+    }
+
+    @media (max-width: 700px) {
+
+        .libro-administrado {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+    }
+
+    </style>
+
+<script>
+
+const formularioLibro = document.getElementById("formularioLibro");
+const listaLibrosBibliotecaria =
+    document.getElementById("listaLibrosBibliotecaria");
+
+const mensajeLibro =
+    document.getElementById("mensajeLibro");
+
+
+/* =========================================
+   OBTENER LIBROS GUARDADOS
+========================================= */
+
+function obtenerLibrosAgregados() {
+
+    return JSON.parse(
+        localStorage.getItem("librosAgregados")
+    ) || [];
+
+}
+
+
+/* =========================================
+   GUARDAR LIBRO
+========================================= */
+
+formularioLibro.addEventListener("submit", function(event) {
+
+    event.preventDefault();
+
+    const titulo = document.getElementById("tituloLibro").value.trim();
+    const autor = document.getElementById("autorLibro").value.trim();
+    const categoria = document.getElementById("categoriaLibro").value;
+    const anio = document.getElementById("anioLibro").value;
+    const imagen = document.getElementById("imagenLibro").value.trim();
+    const descripcion =
+        document.getElementById("descripcionLibro").value.trim();
+
+
+    const nuevoLibro = {
+
+        id: Date.now(),
+
+        titulo: titulo,
+
+        autor: autor,
+
+        categoria: categoria,
+
+        anio: anio,
+
+        imagen: imagen || "imagen-libro-default.jpg",
+
+        descripcion: descripcion
+
+    };
+
+
+    const libros = obtenerLibrosAgregados();
+
+    libros.push(nuevoLibro);
+
+    localStorage.setItem(
+        "librosAgregados",
+        JSON.stringify(libros)
+    );
+
+
+    mensajeLibro.textContent =
+        "✅ El libro fue agregado correctamente.";
+
+    mensajeLibro.style.color = "#188038";
+
+
+    formularioLibro.reset();
+
+    mostrarLibrosAdministrados();
+
+});
+
+
+/* =========================================
+   MOSTRAR LIBROS
+========================================= */
+
+function mostrarLibrosAdministrados() {
+
+    const libros = obtenerLibrosAgregados();
+
+    listaLibrosBibliotecaria.innerHTML = "";
+
+
+    if (libros.length === 0) {
+
+        listaLibrosBibliotecaria.innerHTML =
+            "<p>Aún no has agregado libros.</p>";
+
+        return;
+
+    }
+
+
+    libros.forEach(function(libro) {
+
+        const elemento = document.createElement("div");
+
+        elemento.className = "libro-administrado";
+
+
+        elemento.innerHTML = `
+
+            <img
+                src="${libro.imagen}"
+                alt="Portada de ${libro.titulo}"
+                onerror="this.src='imagen-libro-default.jpg'"
+            >
+
+            <div class="info-libro-admin">
+
+                <h3>${libro.titulo}</h3>
+
+                <p>
+                    <strong>Autor:</strong>
+                    ${libro.autor}
+                </p>
+
+                <p>
+                    <strong>Categoría:</strong>
+                    ${libro.categoria}
+                </p>
+
+                ${
+                    libro.anio
+                    ? `<p><strong>Año:</strong> ${libro.anio}</p>`
+                    : ""
+                }
+
+            </div>
+
+            <button
+                class="btn-eliminar-libro"
+                onclick="eliminarLibro(${libro.id})"
+            >
+                🗑️ Eliminar
+            </button>
+
+        `;
+
+
+        listaLibrosBibliotecaria.appendChild(elemento);
+
+    });
+
+}
+
+
+/* =========================================
+   ELIMINAR LIBRO
+========================================= */
+
+function eliminarLibro(id) {
+
+    const confirmar =
+        confirm("¿Seguro que deseas eliminar este libro?");
+
+
+    if (!confirmar) {
+        return;
+    }
+
+
+    let libros = obtenerLibrosAgregados();
+
+
+    libros = libros.filter(function(libro) {
+
+        return libro.id !== id;
+
+    });
+
+
+    localStorage.setItem(
+        "librosAgregados",
+        JSON.stringify(libros)
+    );
+
+
+    mostrarLibrosAdministrados();
+
+}
+
+
+/* =========================================
+   CARGAR AL ABRIR LA PÁGINA
+========================================= */
+
+mostrarLibrosAdministrados();
+
+</script>
+
+</body>
+
+<div id="pantallaLogin" class="pantalla-login">
+
+    <div class="login-bibliotecaria">
+
+        <h2>🔒 Acceso restringido</h2>
+
+        <p>
+            Panel exclusivo para la bibliotecaria.
+        </p>
+
+        <input
+            type="password"
+            id="passwordBibliotecaria"
+            placeholder="Ingresa la contraseña"
+        >
+
+        <button onclick="verificarPassword()">
+
+            Ingresar
+
+        </button>
+
+        <p id="mensajeError"></p>
+
+    </div>
+
+</div>
+
+</html>

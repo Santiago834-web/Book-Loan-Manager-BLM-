@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Solicitud de préstamo | Biblioteca Digital Dinamarca</title>
+
+        <!-- LOGO DE LA PESTAÑA (FAVICON) -->
+    <link rel="icon" href="imagenes/ODF.png" type="image/png">
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+
+<body>
+
+
+    <!-- BARRA SUPERIOR -->
+
+    <div class="barra-superior">
+
+        Transparencia y acceso a la información pública
+
+    </div>
+
+
+    <!-- MENÚ -->
+
+    <nav class="menu">
+
+        <a href="index.html">Inicio</a>
+        <a href="#">Historial de Agendas</a>
+        <a href="#">Póliza</a>
+        <a href="#">La institución</a>
+        <a href="#">Accesos</a>
+        <a href="#">Investigación</a>
+        <a href="#">Estudiantes</a>
+        <a href="#">Utilidades</a>
+        <a href="#">Lógica</a>
+
+    </nav>
+
+
+    <!-- ENCABEZADO -->
+
+    <header class="encabezado">
+
+
+        <div class="titulo">
+
+            <h1>
+                Institución Educativa Dinamarca
+            </h1>
+
+            <h2>
+                Un lugar donde se aprende y se es feliz
+            </h2>
+
+        </div>
+
+
+        <div class="logo">
+            <img src="imagenes/logo-nuevo.jpg" alt="Logo Institución Educativa Dinamarca">
+        </div>
+
+
+    </header>
+
+
+    <!-- FRASE -->
+
+    <div class="frase">
+
+        Solicita el préstamo de tus libros de manera rápida y sencilla.
+
+    </div>
+
+
+    <!-- CONTENIDO -->
+
+    <main class="contenedor">
+
+
+        <section class="seccion-prestamo">
+
+
+            <a href="index.html" class="boton-regresar">
+
+                ← Volver a la biblioteca
+
+            </a>
+
+
+            <div class="titulo-prestamo">
+
+                <h2>Solicitud de préstamo de libros</h2>
+
+                <p>
+                    Completa la información para solicitar el préstamo
+                    de un libro de la Biblioteca Digital Dinamarca.
+                </p>
+
+            </div>
+
+
+            <!-- FORMULARIO -->
+
+            <form class="formulario-prestamo" id="formularioPrestamo">
+
+
+                <input
+                    type="hidden"
+                    name="_subject"
+                    value="Nueva solicitud de préstamo - Biblioteca Digital Dinamarca"
+                >
+
+
+                <input
+                    type="hidden"
+                    name="_captcha"
+                    value="false"
+                >
+
+
+                <input
+                    type="hidden"
+                    name="_template"
+                    value="table"
+                >
+
+
+                <!-- DATOS DEL ESTUDIANTE -->
+
+                <div class="grupo-formulario completo">
+
+                    <h3>👨‍🎓 Información del estudiante</h3>
+
+                </div>
+
+
+                <div class="grupo-formulario">
+
+                    <label>Nombre completo</label>
+
+                    <input
+                        type="text"
+                        name="Nombre del estudiante"
+                        placeholder="Escribe tu nombre completo"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="grupo-formulario">
+
+                    <label>Número de documento</label>
+
+                    <input
+                        type="text"
+                        name="Documento"
+                        placeholder="Número de documento"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="grupo-formulario">
+
+                    <label>Grado</label>
+
+                    <select name="Grado" required>
+
+                        <option value="">
+                            Selecciona tu grado
+                        </option>
+
+                        <option>6°</option>
+                        <option>7°</option>
+                        <option>8°</option>
+                        <option>9°</option>
+                        <option>10°</option>
+                        <option>11°</option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="grupo-formulario">
+
+                    <label>Grupo</label>
+
+                    <input
+                        type="text"
+                        name="Grupo"
+                        placeholder="Ejemplo: 10°1"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="grupo-formulario">
+
+                    <label>Correo electrónico</label>
+
+                    <input
+                        type="email"
+                        name="Correo del estudiante"
+                        placeholder="correo@ejemplo.com"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="grupo-formulario">
+
+                    <label>Teléfono</label>
+
+                    <input
+                        type="tel"
+                        name="Teléfono"
+                        placeholder="Número de teléfono"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- DATOS DEL LIBRO -->
+
+                <div class="grupo-formulario completo">
+
+                    <h3>📚 Información del libro solicitado</h3>
+
+                </div>
+
+
+                <div class="grupo-formulario">
+
+                    <label>Nombre del libro</label>
+
+                    <input
+                        type="text"
+                        name="Libro solicitado"
+                        placeholder="Escribe el nombre del libro"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="grupo-formulario">
+
+                    <label>Autor</label>
+
+                    <input
+                        type="text"
+                        name="Autor del libro"
+                        placeholder="Nombre del autor"
+                    >
+
+                </div>
+
+
+                <div class="grupo-formulario">
+
+                    <label>Código del libro</label>
+
+                    <input
+                        type="text"
+                        name="Código del libro"
+                        placeholder="Código o identificación"
+                    >
+
+                </div>
+
+
+                <div class="grupo-formulario">
+
+                    <label>Fecha de solicitud</label>
+
+                    <input
+                        type="date"
+                        name="Fecha de solicitud"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="grupo-formulario completo">
+
+                    <label>Motivo o comentario</label>
+
+                    <textarea
+                        name="Comentario"
+                        placeholder="Escribe algún comentario adicional..."
+                    ></textarea>
+
+                </div>
+
+
+                <!-- ACEPTACIÓN -->
+
+                <div class="grupo-formulario completo aceptar">
+
+                    <label>
+
+                        <input
+                            type="checkbox"
+                            name="Aceptación"
+                            value="Sí"
+                            required
+                        >
+
+                        Confirmo que la información suministrada es correcta
+                        y acepto cumplir con las normas de préstamo de la biblioteca.
+
+                    </label>
+
+                </div>
+
+
+                <!-- BOTÓN -->
+
+                <div class="grupo-formulario completo">
+
+                    <button
+                        type="submit"
+                        class="boton-solicitar"
+                    >
+
+                        📚 Enviar solicitud de préstamo
+
+                    </button>
+
+                </div>
+
+
+            </form>
+
+
+        </section>
+
+
+    </main>
+
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-texto">
+            Sede Central: Calle 91 # 65-119 - Tel: 604 257 3923 -
+            WhatsApp: 300 416 6737 //
+            Sede Ricardo Uribe Escobar: Carrera 64B # 75A-49 -
+            Tel: 604 257 0276 - WhatsApp: 300 416 1851 //
+            Correo: iedinamarca@dinamarca.edu.co
+        </div>
+    </footer>
+
+
+<script>
+
+const formulario = document.getElementById("formularioPrestamo");
+
+formulario.addEventListener("submit", function(event) {
+
+    event.preventDefault();
+
+
+    const solicitud = {
+
+        id: Date.now(),
+
+        nombre: document.querySelector(
+            '[name="Nombre del estudiante"]'
+        ).value,
+
+        documento: document.querySelector(
+            '[name="Documento"]'
+        ).value,
+
+        grado: document.querySelector(
+            '[name="Grado"]'
+        ).value,
+
+        grupo: document.querySelector(
+            '[name="Grupo"]'
+        ).value,
+
+        correo: document.querySelector(
+            '[name="Correo del estudiante"]'
+        ).value,
+
+        telefono: document.querySelector(
+            '[name="Teléfono"]'
+        ).value,
+
+        libro: document.querySelector(
+            '[name="Libro solicitado"]'
+        ).value,
+
+        autor: document.querySelector(
+            '[name="Autor del libro"]'
+        ).value,
+
+        codigo: document.querySelector(
+            '[name="Código del libro"]'
+        ).value,
+
+        fecha: document.querySelector(
+            '[name="Fecha de solicitud"]'
+        ).value,
+
+        comentario: document.querySelector(
+            '[name="Comentario"]'
+        ).value,
+
+        estado: "Pendiente"
+
+    };
+
+
+    let solicitudes =
+        JSON.parse(
+            localStorage.getItem("solicitudesPrestamo")
+        ) || [];
+
+
+    solicitudes.push(solicitud);
+
+
+    localStorage.setItem(
+        "solicitudesPrestamo",
+        JSON.stringify(solicitudes)
+    );
+
+
+    alert(
+        "¡Solicitud enviada correctamente! La bibliotecaria revisará tu solicitud."
+    );
+
+
+    formulario.reset();
+
+
+});
+
+</script>
+
+
+
+</body>
+
+</html>

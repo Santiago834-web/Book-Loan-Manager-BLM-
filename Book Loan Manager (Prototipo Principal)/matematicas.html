@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Matemáticas | Biblioteca Digital Dinamarca</title>
+
+        <!-- LOGO DE LA PESTAÑA (FAVICON) -->
+    <link rel="icon" href="imagenes/ODF.png" type="image/png">
+
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+
+        /* =========================================
+           PORTADAS DE LOS LIBROS
+           ========================================= */
+
+        .portada-matematicas {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            text-align: center;
+
+            padding: 10px;
+
+            font-weight: bold;
+
+            line-height: 1.3;
+
+            color: white;
+        }
+
+        .mate-1 {
+            background: linear-gradient(145deg, #234f7d, #102a48);
+        }
+
+        .mate-2 {
+            background: linear-gradient(145deg, #8f2028, #43090d);
+        }
+
+        .mate-3 {
+            background: linear-gradient(145deg, #333333, #080808);
+        }
+
+        .mate-4 {
+            background: linear-gradient(145deg, #80642c, #382707);
+        }
+
+        .mate-5 {
+            background: linear-gradient(145deg, #315c47, #10291c);
+        }
+
+        .mate-6 {
+            background: linear-gradient(145deg, #6c3c72, #29152d);
+        }
+
+
+        /* =========================================
+           INFORMACIÓN EXTRA
+           ========================================= */
+
+        .informacion-libro {
+
+            margin-top: 8px;
+
+            padding-top: 8px;
+
+            border-top: 1px solid #ddd3cb;
+
+        }
+
+        .informacion-libro p {
+
+            font-size: 11px;
+
+            line-height: 1.5;
+
+            color: #444;
+
+            margin-bottom: 5px;
+
+        }
+
+
+        /* =========================================
+           BOTÓN OFICIAL
+           ========================================= */
+
+        .boton-oficial {
+
+            display: inline-block;
+
+            margin-top: 8px;
+
+            padding: 7px 12px;
+
+            background: #c71922;
+
+            color: white;
+
+            text-decoration: none;
+
+            border-radius: 6px;
+
+            font-size: 11px;
+
+            font-weight: bold;
+
+            transition: .2s;
+
+        }
+
+        .boton-oficial:hover {
+
+            background: #970d15;
+
+        }
+
+
+        /* =========================================
+           RESPONSIVE
+           ========================================= */
+
+        @media(max-width: 850px) {
+
+            .lista-libros {
+
+                grid-template-columns: 1fr;
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- BARRA SUPERIOR -->
+
+    <div class="barra-superior">
+
+        Transparencia y acceso a la información pública
+
+    </div>
+
+
+    <!-- MENÚ -->
+
+    <nav class="menu">
+
+        <a href="index.html">Inicio</a>
+
+        <a href="#">Historial de Agendas</a>
+
+        <a href="#">Póliza</a>
+
+        <a href="#">La institución</a>
+
+        <a href="#">Accesos</a>
+
+        <a href="#">Investigación</a>
+
+        <a href="#">Estudiantes</a>
+
+        <a href="#">Utilidades</a>
+
+        <a href="#">Lógica</a>
+
+    </nav>
+
+
+    <!-- ENCABEZADO -->
+
+    <header class="encabezado">
+
+
+        <div class="titulo">
+
+            <h1>
+                Institución Educativa Dinamarca
+            </h1>
+
+            <h2>
+                Un lugar donde se aprende y se es feliz
+            </h2>
+
+        </div>
+
+
+        <div class="logo">
+
+            <img
+                src="imagenes/logo-nuevo.jpg"
+                alt="Logo Institución Educativa Dinamarca"
+            >
+
+        </div>
+
+    </header>
+
+
+    <!-- FRASE -->
+
+    <div class="frase">
+
+        Estamos en un cambio de era caracterizado por la digitalización de prácticamente todo lo que nos rodea.
+
+    </div>
+
+
+    <!-- CONTENIDO -->
+
+    <main class="contenedor">
+
+
+        <section class="biblioteca literatura-pagina">
+
+
+            <!-- REGRESAR -->
+
+            <a
+                href="index.html"
+                class="boton-regresar"
+            >
+                ← Volver a la biblioteca
+            </a>
+
+
+            <!-- TÍTULO -->
+
+            <div class="titulo-literatura">
+
+                <h2>
+                    Matemáticas
+                </h2>
+
+                <p>
+                    Libros y recursos de matemáticas para fortalecer el aprendizaje.
+                </p>
+
+            </div>
+
+
+            <!-- LIBROS -->
+
+            <section class="lista-libros">
+
+
+                <!-- =====================================
+                     LIBRO 1
+                     ===================================== -->
+
+                <article class="tarjeta-literatura">
+
+
+                    <div class="portada-libro">
+
+                        <img
+                            src="imagenes/Algebra-and-Trigonometry.jpg"
+                        >
+
+                    </div>
+
+
+                    <div class="datos-libro">
+
+
+                        <h3>
+                            Algebra and Trigonometry
+                        </h3>
+
+
+                        <p>
+                            <strong>Autor principal:</strong>
+                            Jay Abramson
+                        </p>
+
+
+                        <p>
+                            <strong>Editorial:</strong>
+                            OpenStax
+                        </p>
+
+
+                        <p>
+                            <strong>Fecha:</strong>
+                            2015
+                        </p>
+
+
+                        <p>
+                            <strong>Nivel:</strong>
+                            Educación superior
+                        </p>
+
+
+                        <p>
+                            <strong>Temas:</strong>
+                            Álgebra, funciones, trigonometría, ecuaciones y geometría analítica.
+                        </p>
+
+
+                        <p class="informacion-libro">
+
+                            Libro completo dedicado al estudio del álgebra y la trigonometría.
+                            Incluye funciones, ecuaciones, sistemas, geometría analítica,
+                            secuencias, probabilidad y aplicaciones de la trigonometría.
+
+                        </p>
+
+
+                        <a
+                            href="https://openstax.org/books/algebra-and-trigonometry/pages/1-introduction-to-prerequisites"
+                            target="_blank"
+                            class="boton-oficial"
+                        >
+                            Ver libro oficial →
+                        </a>
+
+
+                    </div>
+
+                </article>
+
+
+
+                <!-- =====================================
+                     LIBRO 2
+                     ===================================== -->
+
+                <article class="tarjeta-literatura">
+
+
+                    <div class="portada-libro">
+
+                        <img
+                            src="imagenes/Precalculus.jpg"
+                        >
+
+                    </div>
+
+
+                    <div class="datos-libro">
+
+
+                        <h3>
+                            Precalculus 2e
+                        </h3>
+
+
+                        <p>
+                            <strong>Autor principal:</strong>
+                            Jay Abramson
+                        </p>
+
+
+                        <p>
+                            <strong>Editorial:</strong>
+                            OpenStax
+                        </p>
+
+
+                        <p>
+                            <strong>Fecha:</strong>
+                            2021
+                        </p>
+
+
+                        <p>
+                            <strong>Nivel:</strong>
+                            Educación superior
+                        </p>
+
+
+                        <p>
+                            <strong>Temas:</strong>
+                            Funciones, álgebra, trigonometría, geometría analítica y cálculo.
+                        </p>
+
+
+                        <p class="informacion-libro">
+
+                            Libro completo de precálculo que aborda funciones,
+                            funciones lineales, polinomiales, racionales,
+                            exponenciales, logarítmicas y trigonométricas.
+
+                        </p>
+
+
+                        <a
+                            href="https://openstax.org/books/precalculus-2e/pages/1-introduction-to-functions"
+                            target="_blank"
+                            class="boton-oficial"
+                        >
+                            Ver libro oficial →
+                        </a>
+
+
+                    </div>
+
+                </article>
+
+
+
+                <!-- =====================================
+                     LIBRO 3
+                     ===================================== -->
+
+                <article class="tarjeta-literatura">
+
+
+                    <div class="portada-libro">
+
+                        <img
+                            src="imagenes/College-Algebra.jpg"
+                        >
+
+                    </div>
+
+
+                    <div class="datos-libro">
+
+
+                        <h3>
+                            College Algebra 2e
+                        </h3>
+
+
+                        <p>
+                            <strong>Autor principal:</strong>
+                            Jay Abramson
+                        </p>
+
+
+                        <p>
+                            <strong>Editorial:</strong>
+                            OpenStax
+                        </p>
+
+
+                        <p>
+                            <strong>Fecha:</strong>
+                            2021
+                        </p>
+
+
+                        <p>
+                            <strong>Nivel:</strong>
+                            Educación superior
+                        </p>
+
+
+                        <p>
+                            <strong>Temas:</strong>
+                            Álgebra, funciones, ecuaciones, polinomios y exponenciales.
+                        </p>
+
+
+                        <p class="informacion-libro">
+
+                            Recurso dedicado al álgebra universitaria.
+                            Incluye explicaciones, ejemplos y ejercicios para
+                            desarrollar habilidades de resolución de problemas.
+
+                        </p>
+
+
+                        <a
+                            href="https://openstax.org/books/college-algebra-2e/pages/1-introduction"
+                            target="_blank"
+                            class="boton-oficial"
+                        >
+                            Ver libro oficial →
+                        </a>
+
+
+                    </div>
+
+                </article>
+
+
+
+                <!-- =====================================
+                     LIBRO 4
+                     ===================================== -->
+
+                <article class="tarjeta-literatura">
+
+
+                    <div class="portada-libro">
+
+                        <img
+                            src="imagenes/Calculus-Volume1.jpg"
+                        >
+
+                    </div>
+
+
+                    <div class="datos-libro">
+
+
+                        <h3>
+                            Calculus Volume 1
+                        </h3>
+
+
+                        <p>
+                            <strong>Autores principales:</strong>
+                            Gilbert Strang y Edwin "Jed" Herman
+                        </p>
+
+
+                        <p>
+                            <strong>Editorial:</strong>
+                            OpenStax
+                        </p>
+
+
+                        <p>
+                            <strong>Nivel:</strong>
+                            Educación superior
+                        </p>
+
+
+                        <p>
+                            <strong>Temas:</strong>
+                            Funciones, límites, derivadas e integración.
+                        </p>
+
+
+                        <p class="informacion-libro">
+
+                            Introducción al cálculo diferencial e integral.
+                            Presenta los conceptos fundamentales mediante ejemplos,
+                            aplicaciones y ejercicios.
+
+                        </p>
+
+
+                        <a
+                            href="https://openstax.org/books/calculus-volume-1/pages/1-introduction"
+                            target="_blank"
+                            class="boton-oficial"
+                        >
+                            Ver libro oficial →
+                        </a>
+
+
+                    </div>
+
+                </article>
+
+
+
+                <!-- =====================================
+                     LIBRO 5
+                     ===================================== -->
+
+                <article class="tarjeta-literatura">
+
+
+                    <div class="portada-libro">
+
+                        <img
+                            src="imagenes/Calculus-Volume.jpg"
+                        >
+
+                    </div>
+
+
+                    <div class="datos-libro">
+
+
+                        <h3>
+                            Calculus Volume 2
+                        </h3>
+
+
+                        <p>
+                            <strong>Autores principales:</strong>
+                            Gilbert Strang y Edwin "Jed" Herman
+                        </p>
+
+
+                        <p>
+                            <strong>Editorial:</strong>
+                            OpenStax
+                        </p>
+
+
+                        <p>
+                            <strong>Nivel:</strong>
+                            Educación superior
+                        </p>
+
+
+                        <p>
+                            <strong>Temas:</strong>
+                            Integración, ecuaciones diferenciales, series y coordenadas polares.
+                        </p>
+
+
+                        <p class="informacion-libro">
+
+                            Segundo volumen de cálculo.
+                            Profundiza en integración, ecuaciones diferenciales,
+                            sucesiones, series y ecuaciones paramétricas y polares.
+
+                        </p>
+
+
+                        <a
+                            href="https://openstax.org/books/calculus-volume-2/pages/1-introduction"
+                            target="_blank"
+                            class="boton-oficial"
+                        >
+                            Ver libro oficial →
+                        </a>
+
+
+                    </div>
+
+                </article>
+
+
+
+                <!-- =====================================
+                     LIBRO 6
+                     ===================================== -->
+
+                <article class="tarjeta-literatura">
+
+
+                    <div class="portada-libro">
+
+                        <img
+                            src="imagenes/Introductory-statistics.jpg"
+                        >
+
+                    </div>
+
+
+                    <div class="datos-libro">
+
+
+                        <h3>
+                            Introductory Statistics 2e
+                        </h3>
+
+
+                        <p>
+                            <strong>Autores principales:</strong>
+                            Barbara Illowsky y Susan Dean
+                        </p>
+
+
+                        <p>
+                            <strong>Editorial:</strong>
+                            OpenStax
+                        </p>
+
+
+                        <p>
+                            <strong>Fecha:</strong>
+                            2023
+                        </p>
+
+
+                        <p>
+                            <strong>Nivel:</strong>
+                            Educación superior
+                        </p>
+
+
+                        <p>
+                            <strong>Temas:</strong>
+                            Datos, probabilidad, variables aleatorias, distribuciones e inferencia.
+                        </p>
+
+
+                        <p class="informacion-libro">
+
+                            Libro introductorio de estadística con énfasis
+                            en aplicaciones prácticas, análisis de datos,
+                            probabilidad y métodos estadísticos.
+
+                        </p>
+
+
+                        <a
+                            href="https://openstax.org/books/introductory-statistics-2e/pages/1-introduction"
+                            target="_blank"
+                            class="boton-oficial"
+                        >
+                            Ver libro oficial →
+                        </a>
+
+
+                    </div>
+
+                </article>
+
+
+            </section>
+
+
+        </section>
+
+    </main>
+
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-texto">
+            Sede Central: Calle 91 # 65-119 - Tel: 604 257 3923 -
+            WhatsApp: 300 416 6737 //
+            Sede Ricardo Uribe Escobar: Carrera 64B # 75A-49 -
+            Tel: 604 257 0276 - WhatsApp: 300 416 1851 //
+            Correo: iedinamarca@dinamarca.edu.co
+        </div>
+    </footer>
+
+
+</body>
+
+</html>

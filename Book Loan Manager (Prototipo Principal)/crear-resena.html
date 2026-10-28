@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Crear reseña - Biblioteca Digital Dinamarca</title>
+
+        <!-- LOGO DE LA PESTAÑA (FAVICON) -->
+    <link rel="icon" href="imagenes/ODF.png" type="image/png">
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+
+<body>
+
+
+    <!-- BARRA SUPERIOR -->
+
+    <div class="barra-superior">
+
+        Transparencia y acceso a la información pública
+
+    </div>
+
+
+    <!-- MENÚ -->
+
+    <nav class="menu">
+
+        <a href="index.html">Inicio</a>
+
+        <a href="#">Historial de Agendas</a>
+
+        <a href="#">Póliza</a>
+
+        <a href="#">La institución</a>
+
+        <a href="#">Accesos</a>
+
+        <a href="#">Investigación</a>
+
+        <a href="#">Estudiantes</a>
+
+        <a href="#">Utilidades</a>
+
+        <a href="#">Lógica</a>
+
+    </nav>
+
+
+    <!-- ENCABEZADO -->
+
+    <header class="encabezado">
+
+
+        <div class="titulo">
+
+            <h1>
+                Institución Educativa Dinamarca
+            </h1>
+
+            <h2>
+                Un lugar donde se aprende y se es feliz
+            </h2>
+
+        </div>
+
+
+        <div class="logo">
+            <img src="imagenes/logo-nuevo.jpg" alt="Logo Institución Educativa Dinamarca">
+        </div>
+
+
+    </header>
+
+
+    <!-- FRASE -->
+
+    <div class="frase">
+
+        Comparte tus experiencias y recomendaciones
+        con la comunidad educativa.
+
+    </div>
+
+
+    <!-- CONTENIDO -->
+
+    <main class="contenedor">
+
+
+        <section class="pagina-resena">
+
+
+            <a href="index.html"
+               class="boton-regresar">
+
+                ← Volver a la biblioteca
+
+            </a>
+
+
+            <div class="titulo-resena">
+
+                <h2>
+                    Crear una reseña
+                </h2>
+
+                <p>
+                    Tu reseña será enviada para revisión antes
+                    de ser publicada.
+                </p>
+
+            </div>
+
+
+            <form class="formulario-resena" id="formularioResena">
+
+                <!-- INFORMACIÓN -->
+
+                <div class="grupo-resena">
+
+                    <label>
+                        Nombre del estudiante
+                    </label>
+
+                    <input
+                        type="text"
+                        name="Nombre"
+                        placeholder="Escribe tu nombre"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="grupo-resena">
+
+                    <label>
+                        Grado
+                    </label>
+
+                    <select
+                        name="Grado"
+                        required
+                    >
+
+                        <option value="">
+                            Selecciona tu grado
+                        </option>
+
+                        <option>6°</option>
+                        <option>7°</option>
+                        <option>8°</option>
+                        <option>9°</option>
+                        <option>10°</option>
+                        <option>11°</option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="grupo-resena completo">
+
+                    <label>
+                        Libro sobre el que quieres hacer la reseña
+                    </label>
+
+                    <input
+                        type="text"
+                        name="Libro"
+                        placeholder="Nombre del libro"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="grupo-resena">
+
+                    <label>
+                        Autor del libro
+                    </label>
+
+                    <input
+                        type="text"
+                        name="Autor"
+                        placeholder="Nombre del autor"
+                    >
+
+                </div>
+
+
+                <div class="grupo-resena">
+
+                    <label>
+                        Calificación
+                    </label>
+
+                    <select
+                        name="Calificación"
+                        required
+                    >
+
+                        <option value="">
+                            Selecciona una calificación
+                        </option>
+
+                        <option value="★★★★★">
+                            ★★★★★ - Excelente
+                        </option>
+
+                        <option value="★★★★☆">
+                            ★★★★☆ - Muy bueno
+                        </option>
+
+                        <option value="★★★☆☆">
+                            ★★★☆☆ - Bueno
+                        </option>
+
+                        <option value="★★☆☆☆">
+                            ★★☆☆☆ - Regular
+                        </option>
+
+                        <option value="★☆☆☆☆">
+                            ★☆☆☆☆ - No me gustó
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="grupo-resena completo">
+
+                    <label>
+                        Tu reseña
+                    </label>
+
+                    <textarea
+                        name="Reseña"
+                        placeholder="Cuéntanos qué opinas del libro..."
+                        required
+                    ></textarea>
+
+                </div>
+
+
+                <!-- AVISO -->
+
+                <div class="aviso-revision">
+
+                    ⏳ Tu reseña será enviada al administrador
+                    y quedará en revisión antes de ser publicada.
+
+                </div>
+
+
+                <!-- BOTÓN -->
+
+                <div class="grupo-resena completo">
+
+                    <button
+                        type="submit"
+                        class="boton-enviar-resena"
+                    >
+
+                        📩 Enviar reseña para revisión
+
+                    </button>
+
+                </div>
+
+
+            </form>
+
+
+        </section>
+
+
+    </main>
+
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-texto">
+            Sede Central: Calle 91 # 65-119 - Tel: 604 257 3923 -
+            WhatsApp: 300 416 6737 //
+            Sede Ricardo Uribe Escobar: Carrera 64B # 75A-49 -
+            Tel: 604 257 0276 - WhatsApp: 300 416 1851 //
+            Correo: iedinamarca@dinamarca.edu.co
+        </div>
+    </footer>
+
+<script>
+
+document.getElementById("formularioResena").addEventListener("submit", function(event) {
+
+    event.preventDefault();
+
+    const nombre = document.querySelector('[name="Nombre"]').value;
+    const grado = document.querySelector('[name="Grado"]').value;
+    const libro = document.querySelector('[name="Libro"]').value;
+    const autor = document.querySelector('[name="Autor"]').value;
+    const calificacion = document.querySelector('[name="Calificación"]').value;
+    const resena = document.querySelector('[name="Reseña"]').value;
+
+    const nuevaResena = {
+
+        id: Date.now(),
+
+        nombre: nombre,
+        grado: grado,
+        libro: libro,
+        autor: autor,
+        calificacion: calificacion,
+        resena: resena,
+
+        estado: "Pendiente",
+
+        fecha: new Date().toLocaleDateString()
+
+    };
+
+    let resenas = JSON.parse(
+        localStorage.getItem("resenas")
+    ) || [];
+
+    resenas.push(nuevaResena);
+
+    localStorage.setItem(
+        "resenas",
+        JSON.stringify(resenas)
+    );
+
+    alert(
+        "✅ Tu reseña fue enviada correctamente. " +
+        "La bibliotecaria la revisará antes de publicarla."
+    );
+
+    window.location.href = "index.html";
+
+});
+
+</script>
+
+</body>
+
+</html>

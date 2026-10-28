@@ -1,0 +1,1203 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Biblioteca Digital Dinamarca</title>
+
+    <!-- LOGO DE LA PESTAÑA (FAVICON) -->
+    <link rel="icon" href="imagenes/ODF.png" type="image/png">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- BARRA SUPERIOR -->
+    <div class="barra-superior">
+        Transparencia y acceso a la información pública
+    </div>
+
+
+    <!-- MENÚ -->
+    <nav class="menu">
+
+        <li><a href="https://dinamarca.edu.co">Inicio<span class="caret icon-home"></span></a></li>
+        <a href="#">Historial de Agendas</a>
+        <a href="#">Póliza</a>
+        <a href="#">La institución</a>
+        <a href="#">Accesos</a>
+        <a href="#">Investigación</a>
+        <a href="#">Estudiantes</a>
+        <a href="#">Utilidades</a>
+        <a href="#">Lógica</a>
+
+    </nav>
+
+
+    <!-- ENCABEZADO -->
+    <header class="encabezado">
+
+        <!-- FECHA -->
+        <a href="https://dinamarca.edu.co/cronograma.php"
+        class="enlace-calendario">
+
+            <div class="calendario">
+
+                <div class="mes" id="mes">
+                    Enero
+                </div>
+
+                <div class="dia" id="dia">
+                    1
+                </div>
+
+                <div class="semana" id="semana">
+                    Lunes
+                </div>
+
+            </div>
+
+        </a>
+
+
+        <!-- TITULO -->
+        <div class="titulo">
+
+            <h1>
+                Institución Educativa Dinamarca
+            </h1>
+
+            <h2>
+                Un lugar donde se aprende y se es feliz
+            </h2>
+
+        </div>
+
+
+        <!-- LOGO -->
+        <div class="logo">
+            <img src="imagenes/logo-nuevo.jpg" alt="Logo Institución Educativa Dinamarca">
+        </div>
+
+
+        <!-- VISITAS -->
+        <div class="visitas">
+
+            Visitas:
+
+            <strong>
+                4.939.650
+            </strong>
+
+        </div>
+
+    </header>
+
+
+    <!-- FRASE -->
+    <div class="frase" id="frase">
+    </div>
+
+    <!-- CONTENIDO PRINCIPAL -->
+    <main class="contenedor">
+
+        <!-- CABECERA DE BIBLIOTECA -->
+        <section class="biblioteca">
+
+            <div class="cabecera-biblioteca">
+
+                <div>
+
+                    <h2>
+                        Biblioteca Digital Dinamarca
+                    </h2>
+
+                    <p>
+                        Conocimiento al alcance de todos
+                    </p>
+
+                </div>
+
+
+                <!-- BUSCADOR -->
+
+                <div class="botones-biblioteca">
+                    <a href="todos-los-libros.html" class="boton-libros">
+                        📚 Ver todos los libros
+                    </a>
+
+                    <a href="ia.html" class="boton-ia">
+                        🤖 Asistente IA
+                    </a>
+                </div>
+
+                <form
+                    class="buscador"
+                    id="formularioBusqueda"
+                >
+
+                    <input
+                        type="text"
+                        id="busqueda"
+                        placeholder="Buscar libros, autores, temas..."
+                    >
+
+                    <button type="submit">
+                        Buscar
+                    </button>
+
+                </form>
+
+            </div>
+
+
+            <!-- BANNER PRINCIPAL -->
+            <section class="banner">
+
+                <div class="slide activo">
+                    <img src="imagenes/biblioteca1.jpg" alt="Biblioteca digital">
+                    <div class="texto-banner">
+                        <h2>Explora, aprende y descubre<br>en nuestra biblioteca digital</h2>
+                        <p>Accede a miles de recursos académicos<br>desde cualquier lugar y a cualquier hora.</p>
+                    </div>
+                </div>
+
+                <div class="slide">
+                    <img src="imagenes/biblioteca2.jpg" alt="Biblioteca y conocimiento">
+                    <div class="texto-banner">
+                        <h2>Encuentra el conocimiento<br>que necesitas</h2>
+                        <p>Libros, investigaciones y recursos para fortalecer tu aprendizaje.</p>
+                    </div>
+                </div>
+
+                <div class="slide">
+                    <img src="imagenes/biblioteca3.jpg" alt="Aprendizaje digital">
+                    <div class="texto-banner">
+                        <h2>Aprende desde cualquier lugar<br>y en cualquier momento</h2>
+                        <p>Descubre nuevos recursos en nuestra biblioteca digital.</p>
+                    </div>
+                </div>
+
+                <button class="flecha izquierda" id="anterior">❮</button>
+
+                <button class="flecha derecha" id="siguiente">❯</button>
+
+                <div class="indicadores">
+                    <span class="indicador activo" data-slide="0"></span>
+                    <span class="indicador" data-slide="1"></span>
+                    <span class="indicador" data-slide="2"></span>
+                </div>
+
+            </section>
+
+
+            <!-- RECURSOS -->
+            <section class="recursos">
+
+                <div class="titulo-recursos">
+
+                    <h2>
+                        Recursos destacados
+                    </h2>
+
+                    <button id="verTodos">
+                        Ver todos
+                    </button>
+
+                </div>
+
+
+                <!-- TARJETAS -->
+                <div class="tarjetas">
+
+
+                    <!-- HISTORIA -->
+                    <article
+                        class="libro literatura-link"
+                        data-busqueda="matematicas matemáticas secundaria libro"
+                        onclick="window.location.href='historia.html'"
+                    >
+
+                        <div class="portada literatura">
+
+                            <img
+                                src="imagenes/historia.jpg"
+                                alt="Portada de Matemáticas"
+                            >
+
+                        </div>
+
+                        <div class="informacion">
+
+                            <h3>
+                                Historia
+                            </h3>
+
+                            <p>
+                                Autores Varios
+                            </p>
+
+                            <small>
+                                Ver libros →
+                            </small>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- BIOLOGIA -->
+                    <article
+                        class="libro literatura-link"
+                        data-busqueda="matematicas matemáticas secundaria libro"
+                        onclick="window.location.href='biologia.html'"
+                    >
+
+                        <div class="portada literatura">
+
+                            <img
+                                src="imagenes/biologia.jpg"
+                                alt="Portada de Matemáticas"
+                            >
+
+                        </div>
+
+                        <div class="informacion">
+
+                            <h3>
+                                Biologia
+                            </h3>
+
+                            <p>
+                                Autores Varios
+                            </p>
+
+                            <small>
+                                Ver libros →
+                            </small>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- MATEMATICAS -->
+                
+                    <article
+                        class="libro literatura-link"
+                        data-busqueda="matematicas matemáticas secundaria libro"
+                        onclick="window.location.href='matematicas.html'"
+                    >
+
+                        <div class="portada literatura">
+
+                            <img
+                                src="imagenes/matematicas.png"
+                                alt="Portada de Matemáticas"
+                            >
+
+                        </div>
+
+                        <div class="informacion">
+
+                            <h3>
+                                Matemáticas
+                            </h3>
+
+                            <p>
+                                Autores Varios
+                            </p>
+
+                            <small>
+                                Ver libros →
+                            </small>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- QUIMICA -->
+                    <article
+                        class="libro literatura-link"
+                        data-busqueda="Quimica general autores varios libro"
+                        onclick="window.location.href='quimica.html'"
+                    >
+
+                        <div class="portada literatura">
+
+                            <img
+                                src="imagenes/quimica-general.png"
+                                alt="Portada de Literatura Universal"
+                            >
+
+                        </div>
+
+                        <div class="informacion">
+
+                            <h3>
+                                Quimica general
+                            </h3>
+
+                            <p>
+                                Autores Varios
+                            </p>
+
+                            <small>
+                                Ver libros →
+                            </small>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- LITERATURA -->
+                    <article
+                        class="libro literatura-link"
+                        data-busqueda="literatura universal autores varios libro"
+                        onclick="window.location.href='literatura.html'"
+                    >
+
+                        <div class="portada literatura">
+
+                            <img
+                                src="imagenes/literatura-universal.png"
+                                alt="Portada de Literatura Universal"
+                            >
+
+                        </div>
+
+                        <div class="informacion">
+
+                            <h3>
+                                Literatura Universal
+                            </h3>
+
+                            <p>
+                                Autores Varios
+                            </p>
+
+                            <small>
+                                Ver libros →
+                            </small>
+
+                        </div>
+
+                    </article>
+
+
+                </div>
+
+            </section>
+
+        </section>
+
+    </main>
+
+    <!-- =========================
+        COMUNIDAD Y PRÉSTAMOS
+    ========================= -->
+
+    <section class="comunidad">
+
+        <div class="titulo-comunidad">
+
+            <h2>Comunidad de la Biblioteca</h2>
+
+            <p>
+                Comparte tus experiencias y solicita el préstamo
+                de los libros disponibles en nuestra biblioteca.
+            </p>
+
+        </div>
+
+
+        <!-- =========================
+            RESEÑAS
+        ========================= -->
+
+        <section class="resenas">
+
+            <h2>Reseñas de estudiantes</h2>
+
+            <div class="contenedor-resenas" id="contenedorResenas">
+
+                <!-- Las reseñas aprobadas aparecerán aquí -->
+
+            </div>
+
+            <div class="crear-resena-contenedor">
+
+                <h3>¿Ya leíste algún libro?</h3>
+
+                <p>
+                    Comparte tu opinión y ayuda a otros estudiantes
+                    a descubrir nuevos libros.
+                </p>
+
+                <a href="crear-resena.html" class="boton-crear-resena">
+
+                    ✍ Crear una reseña
+
+                </a>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+            BOTON DE PRÉSTAMO
+        ========================= -->
+
+        <section class="seccion-prestamo">
+
+            <div class="titulo-prestamo">
+
+                <h2>Solicita un préstamo</h2>
+
+                <p>
+                    Solicita el préstamo de un libro de nuestra biblioteca.
+                    Completa tus datos en el formulario de solicitud.
+                </p>
+
+            </div>
+
+            <a href="prestamo.html" class="boton-ir-prestamo">
+                📚 Solicitar préstamo de un libro
+            </a>
+            
+            <a href="bibliotecaria.html" class="boton-bibliotecaria">
+
+                📋 Panel de la Bibliotecaria
+
+            </a>
+
+        </section>
+
+        <!-- =========================
+            EQUIPO DE DESARROLLO
+        ========================= -->
+
+        <section class="equipo-desarrollo">
+
+            <div class="titulo-equipo">
+
+                <span class="icono-equipo">💻</span>
+
+                <h2>
+                    Nuestro equipo
+                </h2>
+
+                <p>
+                    Desarrollo de la Biblioteca Digital Dinamarca
+                </p>
+
+                <div class="linea-equipo"></div>
+
+                <p class="descripcion-equipo">
+                    Este proyecto fue desarrollado para brindar a la comunidad
+                    educativa un espacio digital donde pueda consultar recursos,
+                    conocer libros, realizar solicitudes de préstamo y compartir
+                    sus experiencias de lectura.
+                </p>
+
+            </div>
+
+
+            <div class="tarjetas-equipo">
+
+
+                <!-- DESARROLLADOR 1 -->
+
+                <article class="miembro-equipo">
+
+                    <div class="foto-equipo">
+                        <img src="imagenes/desarrollador1.jpg" alt="Desarrollador 1">
+                    </div>
+
+                    <span class="rol-equipo">
+                        DESARROLLO WEB Y SCRUM MASTER
+                    </span>
+
+                    <h3>
+                        Santiago Restrepo Arango
+                    </h3>
+
+                    <p>
+                        Desarrollo y programación
+                        de la Biblioteca Digital.
+                    </p>
+
+                    <a href="mailto:restrepo.santiago@dinamarca.edu.co"
+                    class="correo-equipo">
+
+                        ✉ restrepo.santiago@dinamarca.edu.co
+
+                    </a>
+
+                </article>
+
+
+                <!-- DESARROLLADOR 2 -->
+
+                <article class="miembro-equipo">
+
+                    <div class="foto-equipo">
+                        <img src="imagenes/desarrollador2.jpg" alt="Desarrollador 2">
+                    </div>
+
+                    <span class="rol-equipo">
+                        DISEÑO Y EXPERIENCIA
+                    </span>
+
+                    <h3>
+                        Yhader Stewar Villada Salazar
+                    </h3>
+
+                    <p>
+                        Diseño visual, organización
+                        y experiencia de usuario.
+                    </p>
+
+                    <a href="mailto:Yhader.villada@dinamarca.edu.co"
+                    class="correo-equipo">
+
+                        ✉ Yhader.villada@dinamarca.edu.co
+
+                    </a>
+
+                </article>
+
+
+                <!-- DESARROLLADOR 3 -->
+
+                <article class="miembro-equipo">
+
+                    <div class="foto-equipo">
+                        <img src="imagenes/desarrollador3.jpg" alt="Desarrollador 3">
+                    </div>
+
+                    <span class="rol-equipo">
+                        FUNCIONALIDAD
+                    </span>
+
+                    <h3>
+                        María José Zuleta García
+                    </h3>
+
+                    <p>
+                        Funciones y gestión de la biblioteca.
+                    </p>
+
+                    <a href="mailto:Zuletag.maria@dinamarca.edu.co"
+                    class="correo-equipo">
+
+                        ✉ Zuletag.maria@dinamarca.edu.co
+
+                    </a>
+
+                </article>
+
+
+            </div>
+
+
+            <!-- CONTACTO -->
+
+            <div class="contacto-equipo">
+
+                <h3>
+                    Biblioteca Digital Dinamarca
+                </h3>
+
+                <p>
+                    Proyecto de la Institución Educativa Dinamarca
+                </p>
+
+                <a href="mailto:iedinamarca@dinamarca.edu.co">
+                    ✉ iedinamarca@dinamarca.edu.co
+                </a>
+
+            </div>
+
+        </section>
+
+        <!-- =========================
+        FORMULARIO DE SATISFACCIÓN
+        ========================= -->
+    <section class="satisfaccion" id="satisfaccion">
+        <div class="satisfaccion-contenido">
+
+            <h2>Formulario de satisfacción</h2>
+
+            <p class="satisfaccion-intro">
+                Tu opinión nos ayuda a mejorar la Biblioteca Digital Dinamarca.
+                Cuéntanos cómo fue tu experiencia utilizando nuestra página.
+            </p>
+
+            <form id="formularioSatisfaccion">
+
+                <!-- Calificación general -->
+                <div class="campo-satisfaccion">
+                    <label>¿Qué tan satisfecho estás con la Biblioteca Digital?</label>
+
+                    <div class="estrellas">
+                        <input type="radio" id="estrella5" name="satisfaccion" value="5" required>
+                        <label for="estrella5">★</label>
+
+                        <input type="radio" id="estrella4" name="satisfaccion" value="4">
+                        <label for="estrella4">★</label>
+
+                        <input type="radio" id="estrella3" name="satisfaccion" value="3">
+                        <label for="estrella3">★</label>
+
+                        <input type="radio" id="estrella2" name="satisfaccion" value="2">
+                        <label for="estrella2">★</label>
+
+                        <input type="radio" id="estrella1" name="satisfaccion" value="1">
+                        <label for="estrella1">★</label>
+                    </div>
+                </div>
+
+                <!-- Facilidad de uso -->
+                <div class="campo-satisfaccion">
+                    <label for="facilidad">
+                        ¿Qué tan fácil fue encontrar el libro o recurso que buscabas?
+                    </label>
+
+                    <select id="facilidad" name="facilidad" required>
+                        <option value="">Selecciona una opción</option>
+                        <option value="Muy fácil">Muy fácil</option>
+                        <option value="Fácil">Fácil</option>
+                        <option value="Regular">Regular</option>
+                        <option value="Difícil">Difícil</option>
+                        <option value="Muy difícil">Muy difícil</option>
+                    </select>
+                </div>
+
+                <!-- Comentario -->
+                <div class="campo-satisfaccion">
+                    <label for="comentario">
+                        ¿Tienes alguna sugerencia o comentario?
+                    </label>
+
+                    <textarea
+                        id="comentario"
+                        name="comentario"
+                        rows="5"
+                        placeholder="Escribe aquí tu opinión..."
+                    ></textarea>
+                </div>
+
+                <!-- Correo opcional -->
+                <div class="campo-satisfaccion">
+                    <label for="correoSatisfaccion">
+                        Correo electrónico <span>(opcional)</span>
+                    </label>
+
+                    <input
+                        type="email"
+                        id="correoSatisfaccion"
+                        name="correo"
+                        placeholder="ejemplo@correo.com"
+                    >
+                </div>
+
+                <button type="submit" class="boton-satisfaccion">
+                    Enviar opinión
+                </button>
+
+                <!-- Mensaje de confirmación -->
+                <p id="mensajeSatisfaccion" class="mensaje-satisfaccion"></p>
+
+            </form>
+        </div>
+    </section>
+
+
+    <!-- =========================
+        ESTILOS DEL FORMULARIO
+        ========================= -->
+    <style>
+
+    .satisfaccion {
+        width: 100%;
+        padding: 70px 20px;
+        background-color: #fffaf6;
+    }
+
+    .satisfaccion-contenido {
+        max-width: 850px;
+        margin: 0 auto;
+        background-color: white;
+        padding: 40px;
+        border-radius: 15px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    }
+
+    .satisfaccion h2 {
+        text-align: center;
+        color: #c71922;
+        margin-bottom: 15px;
+        font-size: 30px;
+    }
+
+    .satisfaccion-intro {
+        text-align: center;
+        color: #555;
+        margin-bottom: 35px;
+        line-height: 1.6;
+    }
+
+    .campo-satisfaccion {
+        margin-bottom: 25px;
+    }
+
+    .campo-satisfaccion label {
+        display: block;
+        font-weight: bold;
+        margin-bottom: 10px;
+        color: #050505;
+    }
+
+    .campo-satisfaccion label span {
+        font-weight: normal;
+        color: #777;
+        font-size: 14px;
+    }
+
+    .campo-satisfaccion input[type="email"],
+    .campo-satisfaccion select,
+    .campo-satisfaccion textarea {
+        width: 100%;
+        padding: 12px 15px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        font-family: inherit;
+        font-size: 15px;
+        box-sizing: border-box;
+    }
+
+    .campo-satisfaccion textarea {
+        resize: vertical;
+    }
+
+    .campo-satisfaccion input:focus,
+    .campo-satisfaccion select:focus,
+    .campo-satisfaccion textarea:focus {
+        outline: none;
+        border-color: #c71922;
+    }
+
+
+    /* Estrellas */
+    .estrellas {
+        display: flex;
+        flex-direction: row-reverse;
+        justify-content: flex-end;
+        gap: 5px;
+    }
+
+    .estrellas input {
+        display: none;
+    }
+
+    .estrellas label {
+        font-size: 38px;
+        color: #ccc;
+        cursor: pointer;
+        transition: 0.2s;
+    }
+
+    .estrellas label:hover,
+    .estrellas label:hover ~ label,
+    .estrellas input:checked ~ label {
+        color: #c71922;
+    }
+
+
+    /* Botón */
+    .boton-satisfaccion {
+        display: block;
+        width: 100%;
+        padding: 14px;
+        border: none;
+        border-radius: 8px;
+        background-color: #c71922;
+        color: white;
+        font-size: 16px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+    .boton-satisfaccion:hover {
+        background-color: #a9141c;
+    }
+
+
+    /* Mensaje */
+    .mensaje-satisfaccion {
+        text-align: center;
+        margin-top: 20px;
+        font-weight: bold;
+        color: #c71922;
+    }
+
+
+    /* Adaptación para celulares */
+    @media (max-width: 600px) {
+
+        .satisfaccion {
+            padding: 40px 15px;
+        }
+
+        .satisfaccion-contenido {
+            padding: 25px 20px;
+        }
+
+        .satisfaccion h2 {
+            font-size: 25px;
+        }
+
+        .estrellas label {
+            font-size: 32px;
+        }
+    }
+
+    </style>
+
+
+    <!-- =========================
+        JAVASCRIPT
+        ========================= -->
+    <script>
+
+    document.getElementById("formularioSatisfaccion").addEventListener("submit", function(event) {
+
+        event.preventDefault();
+
+        const mensaje = document.getElementById("mensajeSatisfaccion");
+
+        mensaje.textContent = "¡Gracias por compartir tu opinión! Tu respuesta ha sido registrada.";
+
+        this.reset();
+
+    });
+
+    </script>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-texto">
+            Sede Central: Calle 91 # 65-119 - Tel: 604 257 3923 -
+            WhatsApp: 300 416 6737 //
+            Sede Ricardo Uribe Escobar: Carrera 64B # 75A-49 -
+            Tel: 604 257 0276 - WhatsApp: 300 416 1851 //
+            Correo: iedinamarca@dinamarca.edu.co
+        </div>
+    </footer>
+
+
+    <!-- JAVASCRIPT -->
+    <script>
+
+        const formulario =
+            document.getElementById("formularioBusqueda");
+
+        const campoBusqueda =
+            document.getElementById("busqueda");
+
+        const libros =
+            document.querySelectorAll(".libro");
+
+
+        formulario.addEventListener("submit", function(event) {
+
+            event.preventDefault();
+
+            const texto =
+                campoBusqueda.value
+                .toLowerCase()
+                .trim();
+
+
+            libros.forEach(function(libro) {
+
+                libro.classList.remove("encontrado");
+
+            });
+
+
+            if (texto === "") {
+
+                return;
+
+            }
+
+
+            let encontrado = false;
+
+
+            libros.forEach(function(libro) {
+
+                const contenido =
+                    libro.dataset.busqueda
+                    .toLowerCase();
+
+
+                if (contenido.includes(texto)) {
+
+                    libro.classList.add("encontrado");
+
+                    encontrado = true;
+
+                }
+
+            });
+
+
+            if (!encontrado) {
+
+                alert(
+                    "No se encontró ningún recurso relacionado con: "
+                    + texto
+                );
+
+            }
+
+        });
+
+
+        document
+        .getElementById("verTodos")
+        .addEventListener("click", function() {
+
+            libros.forEach(function(libro) {
+
+                libro.classList.remove("encontrado");
+
+            });
+
+            campoBusqueda.value = "";
+
+        });
+
+    </script>
+
+    <!-- JAVASCRIPT BANNER -->
+    <script>
+
+    const slides = document.querySelectorAll(".slide");
+    const puntos = document.querySelectorAll(".indicador");
+
+    const botonSiguiente = document.getElementById("siguiente");
+    const botonAnterior = document.getElementById("anterior");
+
+    let actual = 0;
+
+    function mostrarSlide(numero) {
+
+        slides.forEach(function(slide) {
+            slide.classList.remove("activo");
+        });
+
+        puntos.forEach(function(punto) {
+            punto.classList.remove("activo");
+        });
+
+        slides[numero].classList.add("activo");
+        puntos[numero].classList.add("activo");
+
+        actual = numero;
+    }
+
+    botonSiguiente.addEventListener("click", function() {
+
+        actual++;
+
+        if (actual >= slides.length) {
+            actual = 0;
+        }
+
+        mostrarSlide(actual);
+
+    });
+
+    botonAnterior.addEventListener("click", function() {
+
+        actual--;
+
+        if (actual < 0) {
+            actual = slides.length - 1;
+        }
+
+        mostrarSlide(actual);
+
+    });
+
+    puntos.forEach(function(punto) {
+
+        punto.addEventListener("click", function() {
+
+            let numero =
+                parseInt(punto.getAttribute("data-slide"));
+
+            mostrarSlide(numero);
+
+        });
+
+    });
+
+    setInterval(function() {
+
+        actual++;
+
+        if (actual >= slides.length) {
+            actual = 0;
+        }
+
+        mostrarSlide(actual);
+
+    }, 5000);
+
+
+    const frases = [
+        "Estamos en un cambio de era caracterizado por la digitalización de prácticamente todo lo que nos rodea.",
+    
+        "La educación es el arma más poderosa que puedes usar para cambiar el mundo.",
+    
+        "Aprender es descubrir que algo es posible.",
+    
+        "El conocimiento abre puertas hacia nuevas oportunidades.",
+    
+        "La lectura es una ventana abierta hacia nuevos mundos.",
+    
+        "Cada libro es una nueva oportunidad para aprender.",
+    
+        "La educación transforma vidas y construye un mejor futuro."
+    ];
+
+    const fraseAleatoria = Math.floor(Math.random() * frases.length);
+
+    document.getElementById("frase").textContent = frases[fraseAleatoria];
+
+    </script>
+
+
+
+    <script>
+    const meses = [
+        "Enero",
+        "Febrero",
+        "Marzo",
+        "Abril",
+        "Mayo",
+        "Junio",
+        "Julio",
+        "Agosto",
+        "Septiembre",
+        "Octubre",
+        "Noviembre",
+        "Diciembre"
+    ];
+
+    const diasSemana = [
+        "Domingo",
+        "Lunes",
+        "Martes",
+        "Miércoles",
+        "Jueves",
+        "Viernes",
+        "Sábado"
+    ];
+
+    function actualizarCalendario() {
+        const fecha = new Date();
+
+        document.getElementById("mes").textContent =
+            meses[fecha.getMonth()];
+
+        document.getElementById("dia").textContent =
+            fecha.getDate();
+
+        document.getElementById("semana").textContent =
+            diasSemana[fecha.getDay()];
+    }
+
+    actualizarCalendario();
+</script>
+
+<script>
+
+function mostrarResenasAprobadas() {
+
+    const contenedor =
+        document.getElementById("contenedorResenas");
+
+    const resenas =
+        JSON.parse(localStorage.getItem("resenas")) || [];
+
+
+    const aprobadas = resenas.filter(function(resena) {
+
+        return resena.estado === "Aprobada";
+
+    });
+
+
+    aprobadas.forEach(function(resena) {
+
+        const tarjeta = document.createElement("article");
+
+        tarjeta.className = "tarjeta-resena";
+
+
+        tarjeta.innerHTML = `
+
+            <div class="perfil-resena">
+                👨‍🎓
+            </div>
+
+            <div>
+
+                <h3>
+                    ${resena.nombre}
+                </h3>
+
+                <div class="estrellas">
+                    ${resena.calificacion}
+                </div>
+
+                <p>
+                    "${resena.resena}"
+                </p>
+
+                <small>
+                    Libro: ${resena.libro}
+                </small>
+
+            </div>
+
+        `;
+
+
+        contenedor.appendChild(tarjeta);
+
+    });
+
+}
+
+
+mostrarResenasAprobadas();
+
+</script>
+
+</body>
+</html>
+</body>
+</html>

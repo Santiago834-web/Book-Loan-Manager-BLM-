@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Asistente IA - Biblioteca Digital Dinamarca</title>
+<!-- LOGO DE LA PESTAÑA (FAVICON) -->
+    <link rel="icon" href="imagenes/ODF.png" type="image/png">
+<link rel="stylesheet" href="style.css">
+<style>
+.ia-pagina{max-width:1050px;margin:35px auto;padding:0 20px 50px}
+.ia-titulo{text-align:center;margin-bottom:25px}.ia-titulo h2{color:#c71922}.ia-titulo p{color:#555}
+.chat-ia{background:#fff;border-radius:14px;box-shadow:0 5px 20px rgba(0,0,0,.12);overflow:hidden}
+.chat-cabecera{background:#c71922;color:#fff;padding:18px 22px;display:flex;gap:12px;align-items:center}
+.ia-icono{width:45px;height:45px;border-radius:50%;background:#fff;color:#c71922;display:flex;align-items:center;justify-content:center;font-size:24px}
+.chat-cabecera h3,.chat-cabecera p{margin:0}.chat-cabecera p{font-size:13px;margin-top:3px}
+.chat-mensajes{height:500px;overflow-y:auto;padding:22px;background:#fffaf6}
+.mensaje{display:flex;margin-bottom:18px}.mensaje.usuario{justify-content:flex-end}
+.burbuja{max-width:78%;padding:12px 15px;border-radius:14px;line-height:1.5;white-space:pre-wrap}
+.mensaje.ia .burbuja{background:#fff;color:#333;border:1px solid #e5e5e5;border-bottom-left-radius:4px}
+.mensaje.usuario .burbuja{background:#c71922;color:#fff;border-bottom-right-radius:4px}
+.chat-escribiendo{display:none;padding:0 22px 12px;color:#777;font-size:13px;background:#fffaf6}
+.chat-escribiendo.visible{display:block}
+.chat-formulario{display:flex;gap:10px;padding:15px;background:#fff;border-top:1px solid #ddd}
+.chat-formulario textarea{flex:1;min-height:48px;max-height:130px;resize:vertical;border:1px solid #ccc;border-radius:10px;padding:12px;font-family:inherit;font-size:15px;box-sizing:border-box}
+.chat-formulario textarea:focus{outline:none;border-color:#c71922}
+.chat-formulario button{border:0;background:#c71922;color:#fff;padding:0 22px;border-radius:10px;font-weight:bold;cursor:pointer}
+.chat-formulario button:disabled{opacity:.6}
+.ia-ayuda{margin-top:20px;padding:18px;background:#fff;border-left:5px solid #c71922;border-radius:8px}.ia-ayuda strong{color:#c71922}
+.boton-menu{display:none}
+@media(max-width:768px){
+.menu{display:none;flex-direction:column;width:100%}.menu.menu-abierto{display:flex}
+.boton-menu{display:block;width:100%;border:0;background:#c71922;color:#fff;text-align:left;padding:8px 10px;font-size:17px;font-weight:bold;cursor:pointer}
+.menu a{display:block;width:100%;box-sizing:border-box;padding:7px 6px;border-bottom:1px solid #444}
+.chat-mensajes{height:430px;padding:15px}.burbuja{max-width:88%}
+.chat-formulario{flex-direction:column}.chat-formulario button{min-height:45px}.ia-pagina{padding:0 10px 35px}
+}
+</style>
+</head>
+<body>
+
+<div class="barra-superior">Transparencia y acceso a la información pública</div>
+
+<button class="boton-menu" id="botonMenu">Menú</button>
+
+<nav class="menu" id="menuPrincipal">
+<a href="index.html">Inicio</a>
+<a href="#">Historial de Agendas</a>
+<a href="#">Póliza</a>
+<a href="#">La institución</a>
+<a href="#">Accesos</a>
+<a href="#">Investigación</a>
+<a href="#">Estudiantes</a>
+<a href="#">Utilidades</a>
+<a href="#">Lógica</a>
+</nav>
+
+<header class="encabezado">
+<a href="https://dinamarca.edu.co/cronograma.php" class="enlace-calendario">
+<div class="calendario"><div class="mes" id="mes"></div><div class="dia" id="dia"></div><div class="semana" id="semana"></div></div>
+</a>
+<div class="titulo"><h1>Institución Educativa Dinamarca</h1><h2>Un lugar donde se aprende y se es feliz</h2></div>
+<div class="logo"><img src="imagenes/logo-nuevo.jpg" alt="Logo Institución Educativa Dinamarca"></div>
+<div class="visitas">Visitas: <strong>4.939.650</strong></div>
+</header>
+
+<div class="frase" id="frase"></div>
+<a href="index.html"
+               class="boton-regresar">
+
+                ← Volver a la biblioteca
+
+            </a>
+
+<main class="ia-pagina">
+<div class="ia-titulo">
+<h2>🤖 Asistente IA</h2>
+<p>Pregunta sobre temas académicos, libros o recursos de la Biblioteca Digital Dinamarca.</p>
+</div>
+
+<section class="chat-ia">
+<div class="chat-cabecera"><div class="ia-icono">🤖</div><div><h3>Asistente de la Biblioteca</h3><p>Disponible para ayudarte con tus preguntas</p></div></div>
+<div class="chat-mensajes" id="chatMensajes">
+<div class="mensaje ia"><div class="burbuja">¡Hola! 👋 Soy el asistente de la Biblioteca Digital Dinamarca. Puedo ayudarte con preguntas de estudio, temas académicos y orientación sobre los recursos de la biblioteca.
+
+¿Qué quieres aprender hoy?</div></div>
+</div>
+<div class="chat-escribiendo" id="chatEscribiendo">🤖 El asistente está escribiendo...</div>
+<form class="chat-formulario" id="formularioIA">
+<textarea id="mensajeUsuario" placeholder="Escribe tu pregunta..." required></textarea>
+<button type="submit" id="botonEnviar">Enviar</button>
+</form>
+</section>
+
+<div class="ia-ayuda"><strong>💡 Sugerencia:</strong> Puedes preguntar: "Explícame la fotosíntesis", "¿Qué libro de historia puedo consultar?" o "Ayúdame a entender las ecuaciones cuadráticas".</div>
+</main>
+
+<script>
+const botonMenu=document.getElementById("botonMenu"),menuPrincipal=document.getElementById("menuPrincipal");
+botonMenu.addEventListener("click",()=>menuPrincipal.classList.toggle("menu-abierto"));
+
+const meses=["Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre"];
+const dias=["Domingo","Lunes","Martes","Miércoles","Jueves","Viernes","Sábado"];
+const fecha=new Date();
+document.getElementById("mes").textContent=meses[fecha.getMonth()];
+document.getElementById("dia").textContent=fecha.getDate();
+document.getElementById("semana").textContent=dias[fecha.getDay()];
+
+const frases=[
+"Estamos en un cambio de era caracterizado por la digitalización de prácticamente todo lo que nos rodea.",
+"La educación es el arma más poderosa que puedes usar para cambiar el mundo.",
+"Aprender es descubrir que algo es posible.",
+"El conocimiento abre puertas hacia nuevas oportunidades.",
+"La lectura es una ventana abierta hacia nuevos mundos.",
+"Cada libro es una nueva oportunidad para aprender."
+];
+document.getElementById("frase").textContent=frases[Math.floor(Math.random()*frases.length)];
+
+const formulario=document.getElementById("formularioIA"),entrada=document.getElementById("mensajeUsuario");
+const chat=document.getElementById("chatMensajes"),escribiendo=document.getElementById("chatEscribiendo"),enviar=document.getElementById("botonEnviar");
+const historial=[];
+
+function agregar(texto,tipo){
+const m=document.createElement("div");m.className="mensaje "+tipo;
+const b=document.createElement("div");b.className="burbuja";b.textContent=texto;m.appendChild(b);chat.appendChild(m);chat.scrollTop=chat.scrollHeight;
+}
+
+formulario.addEventListener("submit",async e=>{
+e.preventDefault();const texto=entrada.value.trim();if(!texto)return;
+agregar(texto,"usuario");historial.push({role:"user",content:texto});entrada.value="";enviar.disabled=true;escribiendo.classList.add("visible");
+try{
+const r=await fetch("/api/chat",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({messages:historial})});
+const d=await r.json();if(!r.ok)throw new Error(d.error||"Error");
+agregar(d.answer,"ia");historial.push({role:"assistant",content:d.answer});
+}catch(err){agregar("No pude conectarme con el asistente. Comprueba que el servidor esté funcionando.","ia");console.error(err)}
+finally{enviar.disabled=false;escribiendo.classList.remove("visible");entrada.focus()}
+});
+</script>
+</body>
+</html>
